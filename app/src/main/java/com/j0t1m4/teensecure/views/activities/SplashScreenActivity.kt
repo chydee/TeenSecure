@@ -1,4 +1,4 @@
-package com.j0t1m4.teensecure.views
+package com.j0t1m4.teensecure.views.activities
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -6,7 +6,6 @@ import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.HandlerCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import com.j0t1m4.teensecure.MainActivity
 import com.j0t1m4.teensecure.R
 import com.j0t1m4.teensecure.data.SharedPreferences
 import dagger.hilt.android.AndroidEntryPoint
@@ -31,13 +30,8 @@ class SplashScreenActivity : AppCompatActivity(R.layout.activity_splash_screen) 
         val mainThreadHandler = HandlerCompat.createAsync(Looper.getMainLooper())
         mainThreadHandler.postDelayed(
             {
-                //if () {
-                MainActivity.open(this)
-                // } else {
-
-                // }
-            },
-            3000
+                WelcomeActivity.open(this)
+            }, 3000
         )
     }
 

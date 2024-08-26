@@ -1,7 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <!-- Base application theme. -->
-    <style name="Theme.TeenSecure" parent="Theme.MaterialComponents.NoActionBar">
+    <style name="Theme.TeenSecure" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/primaryColor</item>
         <item name="colorPrimaryVariant">@color/primaryDarkColor</item>
@@ -15,10 +15,10 @@
         <item name="colorSecondaryVariant">@color/secondaryDarkColor</item>
         <item name="colorOnSecondary">@color/secondaryTextColor</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">@color/colorBackground</item>
-        <item name="statusBarBackground">@color/colorBackground</item>
+        <item name="android:statusBarColor">@color/primaryDarkColor</item>
+        <item name="statusBarBackground">@color/primaryDarkColor</item>
         <item name="statusBarForeground">@color/white</item>
-        <item name="android:navigationBarColor">@color/colorBackground</item>
+        <item name="android:navigationBarColor">@color/primaryDarkColor</item>
         <item name="navigationIconTint">@color/white</item>
 
         <!-- Customize your theme here. -->
@@ -43,7 +43,7 @@
         <item name="android:popupBackground">@color/white</item>
     </style>
 
-    <style name="SplashTheme" parent="Theme.MaterialComponents.NoActionBar">
+    <style name="SplashTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="backgroundColor">@color/colorBackground</item>
         <item name="android:colorBackground">@color/colorBackground</item>
 
@@ -51,7 +51,7 @@
         <item name="android:windowLightStatusBar">true</item>
         <item name="statusBarBackground">@color/colorBackground</item>
         <item name="statusBarForeground">@color/white</item>
-        <item name="android:navigationBarColor">@color/colorBackground</item>
+        <item name="android:navigationBarColor">@color/primaryDarkColor</item>
         <item name="navigationIconTint">@color/white</item>
 
         <item name="fontFamily">@font/poppins</item>
@@ -97,7 +97,27 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.JAMITApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.JAMITApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.ActionBar" />
 
     <style name="Theme.JAMITApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="Toolbar.Default" parent="Widget.MaterialComponents.Toolbar">
+        <item name="contentInsetStart">0dp</item>
+        <item name="contentInsetStartWithNavigation">0dp</item>
+        <item name="titleMargin">0dp</item>
+        <item name="android:paddingStart">0dp</item>
+        <item name="android:paddingLeft">0dp</item>
+        <item name="fontFamily">@font/poppins_medium</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:fontFamily">@font/poppins_medium</item>
+        <item name="titleTextAppearance">@style/TextAppearance.Toolbar</item>
+    </style>
+
+
+    <style name="TextAppearance.Toolbar" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="fontFamily">@font/poppins_medium</item>
+        <item name="android:fontFamily">@font/poppins_medium</item>
+        <item name="android:textColor">@color/primaryTextColor</item>
+        <item name="android:textSize">16sp</item>
+    </style>
 </resources>

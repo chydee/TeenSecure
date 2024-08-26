@@ -17,19 +17,23 @@
         tools:replace="android:allowBackup, android:theme"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".views.activities.WelcomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.activities.MainActivity"
             android:configChanges="uiMode"
             android:exported="true"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
         <activity
-            android:name=".views.SplashScreenActivity"
+            android:name=".views.activities.SplashScreenActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

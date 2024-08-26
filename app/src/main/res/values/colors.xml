@@ -53,7 +53,7 @@
     <color name="secondaryLightColor">#ffff75</color>
     <color name="secondaryDarkColor">#c5b400</color>
 
-    <color name="primaryTextColor">#ffffff</color>
+    <color name="primaryTextColor">#111111</color>
     <color name="secondaryTextColor">#212121</color>
 
     <color name="googlePodColor">#1E8FD6</color>
@@ -66,8 +66,8 @@
     <color name="btn_disable">#606060</color>
 
     <color name="colorAccent">#ffae29</color>
-    <color name="colorOnSurface">#FFFFFF</color>
-    <color name="colorBackground">#111111</color>
+    <color name="colorOnSurface">#111111</color>
+    <color name="colorBackground">#FFFFFF</color>
 
     <color name="nav_grey">#AAAAAA</color>
 

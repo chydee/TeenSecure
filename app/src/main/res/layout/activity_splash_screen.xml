@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".views.SplashScreenActivity">
+    tools:context=".views.activities.SplashScreenActivity">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -14,9 +14,21 @@
         android:orientation="vertical">
 
         <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            app:srcCompat="@drawable/teensec" />
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/teensec" />
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/poppins_extrabold"
+            android:gravity="center"
+            android:text="@string/app_name"
+            android:textColor="@color/primaryTextColor"
+            android:textSize="48sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 

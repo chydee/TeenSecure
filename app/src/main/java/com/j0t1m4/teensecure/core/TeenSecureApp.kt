@@ -14,8 +14,8 @@ class TeenSecureApp : Application(), LifecycleObserver {
 
     override fun onCreate() = super.onCreate().also {
         ProcessLifecycleOwner.get().lifecycle.addObserver(this)
-        /*if (BuildConfig.DEBUG) {
-            plant(DebugTree())
-        }*/
+        /* if (BuildConfig.DEBUG) {
+             plant(DebugTree())
+         }*/
     }
 }
