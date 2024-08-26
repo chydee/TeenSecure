@@ -1,9 +1,86 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.TeenSecure" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    <!-- Base application theme. -->
+    <style name="Theme.JAMITApp" parent="Theme.MaterialComponents.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryVariant">@color/primaryDarkColor</item>
+        <item name="colorOnPrimary">@color/primaryTextColor</item>
+        <item name="colorSurface">@color/textColor</item>
+        <item name="colorAccent">@color/primaryLightColor</item>
+        <item name="fontFamily">@font/poppins</item>
+        <item name="android:fontFamily">@font/poppins</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/secondaryColor</item>
+        <item name="colorSecondaryVariant">@color/secondaryDarkColor</item>
+        <item name="colorOnSecondary">@color/secondaryTextColor</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">@color/colorBackground</item>
+        <item name="statusBarBackground">@color/colorBackground</item>
+        <item name="statusBarForeground">@color/white</item>
+        <item name="android:navigationBarColor">@color/colorBackground</item>
+        <item name="navigationIconTint">@color/white</item>
+
+        <!-- Customize your theme here. -->
+        <item name="colorOnSurface">@color/colorOnSurface</item>
+        <item name="colorError">@color/brand_red</item>
+        <item name="colorOnError">@color/brand_white</item>
+        <item name="colorOnBackground">@color/white</item>
+
+        <item name="android:windowAnimationStyle">@style/WindowAnimationStyle</item>
+        <item name="android:windowBackground">@color/colorBackground</item>
+        <item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="o_mr1">shortEdges</item>
+
+        <item name="backgroundColor">@color/colorBackground</item>
+        <item name="android:colorBackground">@color/colorBackground</item>
+
+        <item name="android:showDividers">none</item>
+        <item name="actionBarDivider">@android:color/transparent</item>
+
+        <item name="md_corner_radius">10dp</item>
+        <item name="md_color_title">@color/primaryTextColor</item>
+        <item name="md_color_content">@color/primaryTextColor</item>
+        <item name="md_color_button_text">@color/primaryLightColor</item>
+        <item name="md_font_title">@font/poppins_bold</item>
+        <item name="md_font_body">@font/poppins</item>
+        <item name="md_font_button">@font/poppins</item>
+        <item name="md_background_color">@color/distinctBackground</item>
+
+        <item name="bottomSheetDialogTheme">@style/CustomBottomSheetDialog</item>
+
+        <item name="popupMenuBackground">@color/distinctBackground</item>
+        <item name="android:popupBackground">@color/distinctBackground</item>
     </style>
 
-    <style name="Theme.TeenSecure" parent="Base.Theme.TeenSecure" />
+    <style name="SplashTheme" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="backgroundColor">@color/colorBackground</item>
+        <item name="android:colorBackground">@color/colorBackground</item>
+
+        <item name="android:statusBarColor">@color/colorBackground</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="statusBarBackground">@color/colorBackground</item>
+        <item name="statusBarForeground">@color/white</item>
+        <item name="android:navigationBarColor">@color/colorBackground</item>
+        <item name="navigationIconTint">@color/white</item>
+
+        <item name="fontFamily">@font/poppins</item>
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="md_corner_radius">10dp</item>
+        <item name="md_color_title">@color/textColor</item>
+        <item name="md_color_content">@color/textColor</item>
+        <item name="md_color_button_text">@color/primaryLightColor</item>
+        <item name="md_font_title">@font/poppins_bold</item>
+        <item name="md_font_body">@font/poppins_bold</item>
+        <item name="md_font_button">@font/poppins_bold</item>
+        <item name="md_background_color">@color/distinctBackground</item>
+
+        <item name="android:windowAnimationStyle">@style/WindowAnimationStyle</item>
+        <item name="android:windowBackground">@color/colorBackground</item>
+        <item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="o_mr1">shortEdges</item>
+
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
 </resources>
