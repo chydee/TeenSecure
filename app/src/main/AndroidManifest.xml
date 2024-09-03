@@ -30,7 +30,7 @@
             android:name=".views.activities.SplashScreenActivity"
             android:exported="true"
             android:screenOrientation="portrait"
-            android:theme="@style/SplashTheme">
+            android:theme="@style/Theme.Teensecure.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

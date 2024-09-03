@@ -2,11 +2,8 @@ package com.j0t1m4.teensecure.views.activities
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.os.HandlerCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import com.j0t1m4.teensecure.R
 import com.j0t1m4.teensecure.data.SharedPreferences
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
@@ -14,7 +11,7 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 @SuppressLint("CustomSplashScreen")
-class SplashScreenActivity : AppCompatActivity(R.layout.activity_splash_screen) {
+class SplashScreenActivity : AppCompatActivity() {
 
     @Inject
     lateinit var settingContext: SharedPreferences
@@ -23,16 +20,19 @@ class SplashScreenActivity : AppCompatActivity(R.layout.activity_splash_screen) 
         installSplashScreen()
         super.onCreate(savedInstanceState)
         Timber.tag(SplashScreenActivity::class.simpleName.toString())
-        closeActivity()
+        val splashScreen = installSplashScreen()
+        // Set up the splash screen exit animation.
+        splashScreen.setOnExitAnimationListener { splashScreenViewProvider ->
+            val splashScreenView = splashScreenViewProvider.view
+
+            // Create fade out and scale up animation.
+            splashScreenView.animate().alpha(0f).scaleX(1.2f).scaleY(1.2f).setDuration(2000).withEndAction {
+                // After animation ends, remove splash screen.
+                splashScreenViewProvider.remove()
+                WelcomeActivity.open(this)
+            }.start()
+        }
     }
 
-    private fun closeActivity() {
-        val mainThreadHandler = HandlerCompat.createAsync(Looper.getMainLooper())
-        mainThreadHandler.postDelayed(
-            {
-                WelcomeActivity.open(this)
-            }, 3000
-        )
-    }
 
 }
