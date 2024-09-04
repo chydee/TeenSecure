@@ -8,4 +8,7 @@
     <string name="game_model_label">Game Model</string>
     <string name="game_model_text">The Game is a 3-levelled awareness game. With each level a prerequisite before the next.\nEach level contains;\n\ni. Learning Content \nii. Practice Questions \n\n• The questions in each of the levels are of different form which include; Multiple Choice Questions (MCQs), True or False, Scenario-Based Questions, Matching Questions, Visual Questions and
         Multiple-Answer Questions \n\n• Questions has a reward in form of mark. With 70% as pass mark before the player can proceed to the next level. Once the player got the pass mark. He/she will be rewarded with certain amount, in which will be used to perform the tasks of the quest at that level. Failure to get the pass mark will make the player to repeat the level.</string>
+    <string name="istruction_text">Before you begin your journey, choose the path you wish to explore. Each path offers a unique learning experience and challenges. Select wisely!</string>
+    <string name="teen_secure">Teen Secure</string>
+    <string name="ransom_wrangler">Ransom Wrangler</string>
 </resources>

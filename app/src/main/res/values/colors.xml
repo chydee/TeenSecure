@@ -97,4 +97,5 @@
     <color name="colorJet">#252525</color>
     <color name="color_facebook">#3c5999</color>
     <color name="color_google">#dc4c3f</color>
+    <color name="secondaryBackground">#F0F2F5</color>
 </resources>
