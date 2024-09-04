@@ -73,9 +73,9 @@ class FragmentSelectLevel : Fragment() {
     private fun navigateToNextFragment(level: String) {
         var content: CourseContent? = null
         when (level) {
-            "beginner" -> content = RansomWranglerCourse().beginner
-            "intermediate" -> content = RansomWranglerCourse().intermediate
-            "professional" -> content = RansomWranglerCourse().professional
+            "beginner" -> content = RansomWranglerCourse().level1
+            "intermediate" -> content = RansomWranglerCourse().level2
+            "professional" -> content = RansomWranglerCourse().level3
         }
         // Navigate to the next fragment
         if (content != null) {
