@@ -45,13 +45,13 @@
     <color name="md_deep_orange_A400">#FF3D00</color>
     <color name="md_light_green_A400">#76FF03</color>
 
-    <color name="primaryColor">#9243f2</color>
-    <color name="primaryLightColor">#c874ff</color>
-    <color name="primaryDarkColor">#5b06be</color>
+    <color name="primaryColor">#fa8b0d</color>
+    <color name="primaryLightColor">#fe970e</color>
+    <color name="primaryDarkColor">#f47c0c</color>
 
-    <color name="secondaryColor">#fce63f</color>
-    <color name="secondaryLightColor">#ffff75</color>
-    <color name="secondaryDarkColor">#c5b400</color>
+    <color name="secondaryColor">#2c56a4</color>
+    <color name="secondaryLightColor">#3177c7</color>
+    <color name="secondaryDarkColor">#2c56a4</color>
 
     <color name="primaryTextColor">#111111</color>
     <color name="secondaryTextColor">#212121</color>

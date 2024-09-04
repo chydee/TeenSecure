@@ -4,17 +4,12 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import com.j0t1m4.teensecure.data.SharedPreferences
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
-import javax.inject.Inject
 
 @AndroidEntryPoint
 @SuppressLint("CustomSplashScreen")
 class SplashScreenActivity : AppCompatActivity() {
-
-    @Inject
-    lateinit var settingContext: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()

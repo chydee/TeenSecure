@@ -6,12 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.j0t1m4.teensecure.data.SharedPreferences
 import com.j0t1m4.teensecure.databinding.FragmentWelcomeBinding
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class FragmentWelcome : Fragment() {
     private lateinit var binding: FragmentWelcomeBinding
+
+    @Inject
+    lateinit var settingContext: SharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

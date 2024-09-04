@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:fillViewport="true"
     tools:context=".views.fragments.FragmentWelcome">
 
@@ -41,13 +42,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="36dp"
-            android:fontFamily="@font/poppins_extrabold"
+            android:fontFamily="@font/poppins_bold"
             android:minHeight="80dp"
             android:text="@string/start_text"
             android:textAllCaps="true"
             android:textColor="@color/white"
             android:textSize="36sp"
             android:textStyle="bold"
+            app:cornerRadius="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/app_logo" />
@@ -57,13 +59,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:fontFamily="@font/poppins_extrabold"
+            android:fontFamily="@font/poppins_bold"
             android:minHeight="80dp"
             android:text="@string/about_btn_label"
             android:textAllCaps="true"
             android:textColor="@color/white"
             android:textSize="36sp"
             android:textStyle="bold"
+            app:cornerRadius="16dp"
             app:layout_constraintStart_toStartOf="@+id/btn_start"
             app:layout_constraintTop_toBottomOf="@+id/btn_start" />
 
