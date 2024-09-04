@@ -1,0 +1,80 @@
+package com.j0t1m4.teensecure.data.contents
+
+class RansomWranglerCourse {
+    val beginner = CourseContent(
+        levelTitle = "LEVEL 1: BASIC AWARENESS",
+        introduction = "Welcome to the Basic Awareness level!",
+        description = "This section introduces you to the fundamental concepts of ransomware and general cybersecurity practices. You'll learn how to identify common signs of ransomware infections, such as pop-up messages demanding payment. This level covers essential habits like creating strong passwords, verifying unexpected email attachments, and the importance of regularly updating your software. You'll also be introduced to basic terminology and safe practices to avoid phishing emails and suspicious links. By the end of this level, you'll have a solid foundation to recognize and prevent basic ransomware threats.",
+        learningContents = listOf(
+            LearningContent("Introduction to Ransomware Awareness", ""),
+            LearningContent("Understanding Ransomware", "Imagine waking up to find your computer files locked and a message demanding payment to unlock them. This is ransomware, a malicious software that blocks access to your data until a ransom is paid. Ransomware can target anyone, causing significant disruption and stress."),
+            LearningContent("How Ransomware Spreads", "Ransomware often spreads through phishing emails that look legitimate but contain malicious attachments or links. It can also come from malicious downloads, where seemingly harmless files or programs hide ransomware."),
+            LearningContent("Recognizing the Signs", "Signs of ransomware include sudden inability to access files and pop-up messages demanding payment. Recognizing these signs early can help minimize damage."),
+            LearningContent("Preventing Ransomware Infections", "Use strong, unique passwords, regularly update software, and install reliable antivirus software. Avoid opening suspicious emails or clicking on unfamiliar links."),
+            LearningContent("Backup and Recovery", "Regularly back up your data to multiple locations (cloud storage and external drives) and test backups to ensure they work. This way, you can restore your files without paying a ransom if infected."),
+            LearningContent("Responding to an Infection", "If infected, disconnect from the internet immediately to prevent the ransomware from spreading. Seek professional help to remove the ransomware and restore data from backups."),
+            LearningContent(
+                "Everyday Examples",
+                "A friend received an email from what appeared to be their bank, asking to verify account details via a link. Suspicious, they called the bank directly and discovered the email was a phishing attempt. Their caution prevented a potential ransomware attack. Another person regularly backed up their important documents to a cloud service. When ransomware hit, they restored their files from the cloud without paying the ransom."
+            ),
+        ),
+        tips = "Stay vigilant, use strong passwords, keep software updated, and back up your data regularly. These steps can help protect against ransomware and keep your data safe."
+    )
+    val intermediate = CourseContent(
+        levelTitle = "LEVEL 2: INTERMEDIATE KNOWLEDGE",
+        introduction = "In the Intermediate Knowledge level, you'll dive deeper into the methods ransomware uses to infiltrate systems.",
+        description = "This section explains the significance of multi-factor authentication and the dangers of using public Wi-Fi for sensitive transactions. \n" + "You'll also learn about the importance of regular software updates and how antivirus software can protect your devices. Scenario-based questions will help you practice real-life decision-making skills in the event of a ransomware attack. \n" + "By completing this level, you'll be better equipped to implement intermediate security measures and respond effectively to potential ransomware threats.",
+        learningContents = listOf(
+            LearningContent("Intermediate Level: Enhancing Ransomware Awareness", ""),
+            LearningContent("The Threat of Ransomware", "Imagine your computer suddenly displaying a message demanding money to regain access to your files. This is ransomware, designed specifically to encrypt your files and demand a ransom for their release. Recognizing this threat is the first step in protecting yourself"),
+            LearningContent("Boosting Security with MFA", "Multi-factor authentication (MFA) adds an extra layer of security by requiring more than one form of verification, such as a password and a code sent to your phone. This makes it significantly harder for attackers to gain access to your accounts."),
+            LearningContent("Immediate Actions During an Attack", "If you encounter ransomware, don't panic. Disconnect from the network immediately and seek professional help. Paying the ransom isn't a guarantee you'll get your files back and might encourage further attacks."),
+            LearningContent("Safe Online Practices", "Regularly updating your software, using strong passwords, and installing antivirus software are fundamental practices to prevent ransomware infections. Public Wi-Fi, often insecure, should be avoided for sensitive transactions."),
+            LearningContent("Identifying Phishing Emails", "Phishing emails look legitimate but are designed to trick you into giving up personal information or downloading malware. Always verify the authenticity of emails, especially those requesting sensitive information."),
+            LearningContent("Importance of Backups", "Regularly back up your data and store copies in multiple locations. This ensures you can recover your files without paying a ransom if your system gets infected. Periodically test your backups to confirm they work properly."),
+        ),
+        tips = "Stay proactive by using multi-factor authentication, updating your software, and backing up your data. These steps will help you stay protected against ransomware."
+    )
+
+    val professional = CourseContent(
+        levelTitle = "LEVEL 3: ADVANCED UNDERSTANDING",
+        introduction = "The Advanced Understanding level focuses on more complex aspects of ransomware protection and response.",
+        description = "You'll explore various ransomware delivery methods, such as phishing emails, malicious downloads, and software vulnerabilities. \n" +
+                "This level emphasizes the importance of having a robust backup strategy and understanding the role of encryption in protecting data. \n" +
+                "\nYou'll also learn about the immediate steps to take after detecting a ransomware infection, including isolating affected systems and reporting the attack. \n" + "By mastering this level, you'll be prepared to handle advanced ransomware scenarios and implement comprehensive security strategies.",
+        learningContents = listOf(
+            LearningContent("Ransomware Delivery Methods:", ""),
+            LearningContent(
+                "Ransomware can infiltrate systems through various methods:", "- Phishing Emails: Fake emails tricking you into clicking malicious links or downloading harmful attachments.\n" +
+                        "- Malicious Downloads: Downloading software from untrusted sources can introduce ransomware.\n" +
+                        "- Software Vulnerabilities: Outdated software can be exploited by ransomware to gain access to your system."
+            ),
+            LearningContent("Backup Strategies:", "Regular backups are vital for data recovery. Use a mix of cloud and external drive backups. Ensure backups are stored in multiple locations and test them regularly to confirm they work correctly."),
+            LearningContent("Encryption and Ransom Notes:", "Ransomware often encrypts your data, making it inaccessible until a ransom is paid. Common traits of ransom notes include demands for payment in cryptocurrencies and threats if the ransom isn't paid."),
+            LearningContent("Immediate Actions Post-Infection:", "If you detect ransomware, disconnect from the network to prevent it from spreading. Seek professional help to assess and remove the infection. Avoid paying the ransom, as it doesn't guarantee data recovery."),
+            LearningContent(
+                "Reporting Attacks:", "Reporting ransomware attacks to authorities helps track and combat cybercrime. Contact IT support or cybersecurity professionals for assistance and report the incident to local law enforcement or cybersecurity agencies.\n" +
+                        "By understanding and applying these advanced principles, you'll be well-prepared to handle and respond to ransomware infections effectively."
+            ),
+            LearningContent("Ransomware Scenario:", "Your computer suddenly displays a ransom note demanding payment to unlock your files. You suspect a ransomware attack."),
+            LearningContent(
+                "Steps to take:", """
+               1. Immediately disconnect your computer from the network.
+               2. Contact your IT department or a cybersecurity professional for assistance.
+               3. Check your most recent backups to ensure they are clean and up-to-date.
+               4. Follow the professional's guidance to remove the ransomware and restore your files from backup.
+            """.trimIndent()
+            ),
+            LearningContent("Scenario of Backup", "You are tasked with creating a backup strategy for your team to protect against potential ransomware attacks."),
+            LearningContent(
+                "Steps to take:", """
+               1. Identify the critical data that needs to be backed up.
+               2. Choose appropriate backup methods (e.g., cloud storage, external drives).
+               3. Schedule regular backups and verify that they are working correctly.
+               4. Test the restoration process to ensure you can recover data from the backups.
+            """.trimIndent()
+            ),
+        ),
+        tips = ""
+    )
+}
