@@ -24,21 +24,21 @@
     <fragment
         android:id="@+id/fragmentSelectLevel"
         android:name="com.j0t1m4.teensecure.views.fragments.FragmentSelectLevel"
-        android:label="Select Level"
+        android:label=""
         tools:layout="@layout/fragment_select_level">
+        <argument
+            android:name="gameOption"
+            android:defaultValue="0"
+            app:argType="integer" />
         <action
-            android:id="@+id/action_fragmentSelectLevel_to_fragmentLearningContent"
-            app:destination="@id/fragmentLearningContent"
+            android:id="@+id/action_fragmentSelectLevel_to_fragmentSelectedLevel"
+            app:destination="@id/fragmentSelectedLevel"
             app:enterAnim="@android:anim/fade_in"
             app:exitAnim="@android:anim/fade_out"
             app:popEnterAnim="@android:anim/slide_in_left"
             app:popExitAnim="@android:anim/slide_out_right"
             app:popUpTo="@id/fragmentSelectLevel"
             app:popUpToInclusive="false" />
-        <argument
-            android:name="gameOption"
-            android:defaultValue="0"
-            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/fragmentLearningContent"
@@ -48,5 +48,23 @@
         <argument
             android:name="courseContent"
             app:argType="com.j0t1m4.teensecure.data.contents.CourseContent" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentSelectedLevel"
+        android:name="com.j0t1m4.teensecure.views.fragments.FragmentSelectedLevel"
+        android:label=""
+        tools:layout="@layout/fragment_selected_level">
+        <action
+            android:id="@+id/action_fragmentSelectedLevel_to_fragmentLearningContent"
+            app:destination="@id/fragmentLearningContent"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right"
+            app:popUpTo="@id/fragmentSelectedLevel"
+            app:popUpToInclusive="false" />
+        <argument
+            android:name="selectedLevel"
+            app:argType="string" />
     </fragment>
 </navigation>

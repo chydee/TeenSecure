@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/secondaryBackground"
     android:fillViewport="true"
-    tools:context=".views.fragments.FragmentSelectLevel">
+    tools:context=".views.fragments.FragmentSelectedLevel">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -39,55 +38,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/instr_text" />
 
-        <ImageButton
-            android:id="@+id/btn_beginner_default"
+        <ImageView
+            android:id="@+id/img_selected_level"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
-            android:background="?selectableItemBackgroundBorderless"
-            android:scaleType="centerCrop"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/instr_text_b"
-            app:srcCompat="@drawable/beginner_default" />
-
-        <ImageButton
-            android:id="@+id/btn_intermediate_default"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:background="?selectableItemBackgroundBorderless"
-            android:scaleType="centerCrop"
-            app:layout_constraintEnd_toStartOf="@+id/btn_professional_default"
-            app:layout_constraintStart_toStartOf="@+id/instr_text_b"
-            app:layout_constraintTop_toBottomOf="@+id/btn_beginner_default"
-            app:srcCompat="@drawable/intermediate_default" />
-
-        <ImageButton
-            android:id="@+id/btn_professional_default"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="?selectableItemBackgroundBorderless"
-            android:scaleType="centerCrop"
-            app:layout_constraintBottom_toBottomOf="@+id/btn_intermediate_default"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/btn_intermediate_default"
-            app:layout_constraintTop_toTopOf="@+id/btn_intermediate_default"
-            app:srcCompat="@drawable/professional_default" />
-
-        <TextView
-            android:id="@+id/tv_selected_level"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/primaryDarkColor"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:visibility="visible"
             app:layout_constraintBottom_toTopOf="@+id/btn_proceed"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_intermediate_default"
-            tools:text="Selected Level: " />
+            app:layout_constraintTop_toBottomOf="@+id/instr_text_b"
+            app:srcCompat="@drawable/beginner_selected" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_proceed"

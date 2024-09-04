@@ -15,7 +15,7 @@
         android:fontFamily="@font/poppins_black"
         android:text="Choose Your"
         android:textColor="@color/black"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -47,10 +47,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title_b" />
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="20sp"
+        android:layout_margin="20dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/container"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -63,10 +64,15 @@
             android:layout_width="180dp"
             android:layout_height="180dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="36dp"
+            android:layout_marginBottom="24dp"
             android:background="@drawable/game_options_btn_container"
             android:foreground="?selectableItemBackgroundBorderless"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/option_ransom_wrangle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed">
 
             <ImageView
                 android:layout_width="90dp"
@@ -92,10 +98,13 @@
             android:layout_width="180dp"
             android:layout_height="180dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="36dp"
             android:background="@drawable/game_options_btn_container"
             android:foreground="?selectableItemBackgroundBorderless"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/option_teen_secure"
+            app:layout_constraintStart_toStartOf="@+id/option_teen_secure"
+            app:layout_constraintTop_toBottomOf="@+id/option_teen_secure">
 
             <ImageView
                 android:layout_width="90dp"
@@ -115,6 +124,6 @@
                 android:textStyle="bold" />
 
         </LinearLayout>
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
