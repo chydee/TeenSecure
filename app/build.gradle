@@ -112,6 +112,9 @@ dependencies {
 
     implementation 'com.afollestad.material-dialogs:core:3.3.0'
 
+    // Lottiefiles animation
+    implementation 'com.airbnb.android:lottie:6.5.2'
+
 }
 kapt {
     correctErrorTypes true
