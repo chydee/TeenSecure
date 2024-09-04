@@ -8,6 +8,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.j0t1m4.teensecure.R
+import com.j0t1m4.teensecure.data.contents.CourseContent
+import com.j0t1m4.teensecure.data.contents.RansomWranglerCourse
 import com.j0t1m4.teensecure.databinding.FragmentSelectLevelBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -46,7 +48,7 @@ class FragmentSelectLevel : Fragment() {
             if (selectedLevel == null) {
                 Toast.makeText(context, "Please select a level", Toast.LENGTH_SHORT).show()
             } else {
-                navigateToNextFragment()
+                navigateToNextFragment(selectedLevel!!)
             }
         }
     }
@@ -68,9 +70,19 @@ class FragmentSelectLevel : Fragment() {
         binding.btnProfessionalDefault.visibility = View.GONE
     }
 
-    private fun navigateToNextFragment() {
+    private fun navigateToNextFragment(level: String) {
+        var content: CourseContent? = null
+        when (level) {
+            "beginner" -> content = RansomWranglerCourse().beginner
+            "intermediate" -> content = RansomWranglerCourse().intermediate
+            "professional" -> content = RansomWranglerCourse().professional
+        }
         // Navigate to the next fragment
-        findNavController().navigate(R.id.action_fragmentSelectLevel_to_nextFragment)
+        if (content != null) {
+            FragmentSelectLevelDirections.actionFragmentSelectLevelToFragmentLearningContent(content).apply {
+                findNavController().navigate(this)
+            }
+        }
     }
 
 

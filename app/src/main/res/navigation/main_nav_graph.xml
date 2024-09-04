@@ -3,11 +3,50 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav_graph.xml"
-    app:startDestination="@id/fragmentSelectLevel">
+    app:startDestination="@id/fragmentGameOptions">
+
+    <fragment
+        android:id="@+id/fragmentGameOptions"
+        android:name="com.j0t1m4.teensecure.views.fragments.FragmentGameOptions"
+        android:label=""
+        tools:layout="@layout/fragment_game_options">
+        <action
+            android:id="@+id/action_fragmentGameOptions_to_fragmentSelectLevel"
+            app:destination="@id/fragmentSelectLevel"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right"
+            app:popUpTo="@id/fragmentGameOptions"
+            app:popUpToInclusive="false" />
+    </fragment>
 
     <fragment
         android:id="@+id/fragmentSelectLevel"
         android:name="com.j0t1m4.teensecure.views.fragments.FragmentSelectLevel"
         android:label="Select Level"
-        tools:layout="@layout/fragment_select_level" />
+        tools:layout="@layout/fragment_select_level">
+        <action
+            android:id="@+id/action_fragmentSelectLevel_to_fragmentLearningContent"
+            app:destination="@id/fragmentLearningContent"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right"
+            app:popUpTo="@id/fragmentSelectLevel"
+            app:popUpToInclusive="false" />
+        <argument
+            android:name="gameOption"
+            android:defaultValue="0"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentLearningContent"
+        android:name="com.j0t1m4.teensecure.views.fragments.FragmentLearningContent"
+        android:label="Course Content"
+        tools:layout="@layout/fragment_learning_content">
+        <argument
+            android:name="courseContent"
+            app:argType="com.j0t1m4.teensecure.data.contents.CourseContent" />
+    </fragment>
 </navigation>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F0F2F5"
+    android:fillViewport="true"
+    android:padding="16dp"
+    tools:context=".views.fragments.FragmentLearningContent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Level Title -->
+        <TextView
+            android:id="@+id/tv_level_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_bold"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            tools:text="LEVEL 1: BASIC AWARENESS" />
+
+        <!-- Introduction -->
+        <TextView
+            android:id="@+id/tv_introduction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/poppins"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            tools:text="Welcome to the Basic Awareness level!" />
+
+        <!-- Description -->
+        <TextView
+            android:id="@+id/tv_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/poppins"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            tools:text="This section introduces you to the fundamental concepts of ransomware and general cybersecurity practices. You'll learn how to identify common signs of ransomware infections, such as pop-up messages demanding payment. This level covers essential habits like creating strong passwords, verifying unexpected email attachments, and the importance of regularly updating your software. You'll also be introduced to basic terminology and safe practices to avoid phishing emails and suspicious links. By the end of this level, you'll have a solid foundation to recognize and prevent basic ransomware threats." />
+
+        <!-- Learning Contents Header -->
+        <TextView
+            android:id="@+id/tv_learning_contents_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/poppins_bold"
+            android:textColor="@color/md_green_500"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            tools:text="Learning Contents:" />
+
+        <!-- Learning Contents -->
+        <LinearLayout
+            android:id="@+id/ll_learning_contents"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical">
+
+            <!-- Example of a Learning Content item -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                tools:text="1. Introduction to Ransomware Awareness" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/poppins"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                tools:text="Imagine waking up to find your computer files locked and a message demanding payment to unlock them. This is ransomware, a malicious software that blocks access to your data until a ransom is paid. Ransomware can target anyone, causing significant disruption and stress." />
+        </LinearLayout>
+
+        <!-- Tips Section -->
+        <TextView
+            android:id="@+id/tv_tips_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="@string/tips"
+            android:textColor="@color/md_green_500"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_tips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/poppins"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            tools:text="Stay vigilant, use strong passwords, keep software updated, and back up your data regularly. These steps can help protect against ransomware and keep your data safe." />
+
+    </LinearLayout>
+</ScrollView>
+
+

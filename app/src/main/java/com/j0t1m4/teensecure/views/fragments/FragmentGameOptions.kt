@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.j0t1m4.teensecure.databinding.FragmentGameOptionsBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -20,6 +21,20 @@ class FragmentGameOptions : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentGameOptionsBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.optionTeenSecure.setOnClickListener {
+            FragmentGameOptionsDirections.actionFragmentGameOptionsToFragmentSelectLevel().apply {
+                findNavController().navigate(this)
+            }
+        }
+        binding.optionRansomWrangle.setOnClickListener {
+            FragmentGameOptionsDirections.actionFragmentGameOptionsToFragmentSelectLevel(1).apply {
+                findNavController().navigate(this)
+            }
+        }
     }
 
 }
