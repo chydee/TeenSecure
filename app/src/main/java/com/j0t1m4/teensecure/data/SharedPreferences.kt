@@ -25,9 +25,13 @@ class SharedPreferences(applicationContext: Context) {
         get() = config.getInt(KEY_CURRENT_SCORE, 0)
         set(value) = config.edit().putInt(KEY_CURRENT_SCORE, value).apply()
 
-    var currentLevel: Int
-        get() = config.getInt(KEY_CURRENT_LEVEL, 0)
-        set(value) = config.edit().putInt(KEY_CURRENT_LEVEL, value).apply()
+    var currentLevelTS: Int
+        get() = config.getInt(KEY_CURRENT_LEVEL_TS, 1)
+        set(value) = config.edit().putInt(KEY_CURRENT_LEVEL_TS, value).apply()
+
+    var currentLevelRW: Int
+        get() = config.getInt(KEY_CURRENT_LEVEL_RW, 1)
+        set(value) = config.edit().putInt(KEY_CURRENT_LEVEL_RW, value).apply()
 
 
     fun clearAllStoredData() {
@@ -39,6 +43,7 @@ class SharedPreferences(applicationContext: Context) {
         private const val CONFIG_NAME = "config"
         private const val KEY_USER_IS_TEEN = "key_user_is_teen"
         private const val KEY_CURRENT_SCORE = "key_user_current_score"
-        private const val KEY_CURRENT_LEVEL = "key_user_current_level"
+        private const val KEY_CURRENT_LEVEL_TS = "key_user_current_level_teen_secure"
+        private const val KEY_CURRENT_LEVEL_RW = "key_user_current_level_ransom_wrangler"
     }
 }

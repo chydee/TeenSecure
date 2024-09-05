@@ -1,6 +1,6 @@
 package com.j0t1m4.teensecure.data.contents
 
-class RansomWranglerCourse {
+object RansomWranglerCourse {
     val level1Content = CourseContent(
         levelTitle = "LEVEL 1: BASIC AWARENESS",
         introduction = "Welcome to the Basic Awareness level!",

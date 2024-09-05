@@ -15,8 +15,7 @@ class FragmentGameOptions : Fragment() {
     private lateinit var binding: FragmentGameOptionsBinding
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
         binding = FragmentGameOptionsBinding.inflate(inflater, container, false)
@@ -25,12 +24,12 @@ class FragmentGameOptions : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.optionTeenSecure.setOnClickListener {
-            FragmentGameOptionsDirections.actionFragmentGameOptionsToFragmentSelectLevel().apply {
+        binding.optionRansomWrangle.setOnClickListener {
+            FragmentGameOptionsDirections.actionFragmentGameOptionsToFragmentRwLevelSelector().apply {
                 findNavController().navigate(this)
             }
         }
-        binding.optionRansomWrangle.setOnClickListener {
+        binding.optionTeenSecure.setOnClickListener {
             FragmentGameOptionsDirections.actionFragmentGameOptionsToFragmentSelectLevel(1).apply {
                 findNavController().navigate(this)
             }

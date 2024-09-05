@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".views.fragments.FragmentRwLevelSelector">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- Title -->
+        <TextView
+            android:id="@+id/tv_welcome_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="@string/welcome_rw"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <!-- Instructions -->
+        <TextView
+            android:id="@+id/tv_instructions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/poppins"
+            android:text="@string/rw_welcome_message"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <!-- Level 1 Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_level_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:fontFamily="@font/poppins_bold"
+            android:paddingVertical="16dp"
+            android:text="@string/rw_level_1_text"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:backgroundTint="@color/secondaryColor"
+            app:cornerRadius="16dp" />
+
+        <!-- Level 2 Locked -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_level_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:enabled="false"
+            android:fontFamily="@font/poppins_bold"
+            android:text="@string/rw_level_2_text"
+            android:textSize="18sp"
+            app:cornerRadius="16dp" />
+
+        <!-- Repeat similar buttons for Level 3, Level 4, and Level 5 with locked states -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_level_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:enabled="false"
+            android:fontFamily="@font/poppins_bold"
+            android:text="@string/rw_level_3_text"
+            android:textSize="18sp"
+            app:cornerRadius="16dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_level_4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:enabled="false"
+            android:fontFamily="@font/poppins_bold"
+            android:text="@string/rw_level_4_text"
+            android:textSize="18sp"
+            app:cornerRadius="16dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_level_5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:enabled="false"
+            android:fontFamily="@font/poppins_bold"
+            android:paddingVertical="16dp"
+            android:text="@string/rw_level_5_text"
+            android:textSize="18sp"
+            app:cornerRadius="16dp" />
+
+    </LinearLayout>
+
+</ScrollView>

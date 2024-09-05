@@ -53,6 +53,10 @@ android {
         dataBinding true
         viewBinding true
     }
+    configurations {
+        all*.exclude module: 'okhttp'
+        all*.exclude module: 'okio'
+    }
 }
 
 dependencies {
