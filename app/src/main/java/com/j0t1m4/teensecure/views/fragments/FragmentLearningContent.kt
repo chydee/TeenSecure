@@ -35,7 +35,7 @@ class FragmentLearningContent : Fragment() {
         populateScreen()
     }
 
-    fun populateScreen() {
+    private fun populateScreen() {
         binding.tvLevelTitle.text = args.courseContent.levelTitle
         binding.tvIntroduction.text = args.courseContent.introduction
         binding.tvDescription.text = args.courseContent.description
@@ -43,7 +43,7 @@ class FragmentLearningContent : Fragment() {
         addLearningContents(args.courseContent.learningContents, binding.llLearningContents, requireContext())
     }
 
-    fun addLearningContents(learningContents: List<LearningContent>, container: LinearLayout, context: Context) {
+    private fun addLearningContents(learningContents: List<LearningContent>, container: LinearLayout, context: Context) {
         // Loop through the learning contents, skipping the first item (header)
         for (i in 1 until learningContents.size) {
             val content = learningContents[i]

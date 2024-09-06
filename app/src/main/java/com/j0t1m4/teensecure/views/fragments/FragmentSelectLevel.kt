@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.j0t1m4.teensecure.databinding.FragmentSelectLevelBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -14,6 +15,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class FragmentSelectLevel : Fragment() {
     private lateinit var binding: FragmentSelectLevelBinding
     private var selectedLevel: String? = null
+    private val args: FragmentSelectLevelArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -56,7 +58,7 @@ class FragmentSelectLevel : Fragment() {
     }
 
     private fun navigateToNextFragment(level: String) {
-        FragmentSelectLevelDirections.actionFragmentSelectLevelToFragmentSelectedLevel(level).apply {
+        FragmentSelectLevelDirections.actionFragmentSelectLevelToFragmentSelectedLevel(level, args.topic).apply {
             findNavController().navigate(this)
         }
 

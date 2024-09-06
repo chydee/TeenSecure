@@ -30,10 +30,9 @@ class FragmentGameOptions : Fragment() {
             }
         }
         binding.optionTeenSecure.setOnClickListener {
-            FragmentGameOptionsDirections.actionFragmentGameOptionsToFragmentSelectLevel(1).apply {
+            FragmentGameOptionsDirections.actionFragmentGameOptionsToFragmentTopicSelection().apply {
                 findNavController().navigate(this)
             }
         }
     }
-
 }

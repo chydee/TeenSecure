@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.j0t1m4.teensecure.databinding.FragmentTopicSelectionBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -26,26 +27,26 @@ class FragmentTopicSelection : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         // Set up click listeners for each topic
         binding.btnPhishing.setOnClickListener {
-            navigateToLevelSelection("Phishing")
+            navigateToLevelSelection("phishing")
         }
 
         binding.btnBaiting.setOnClickListener {
-            navigateToLevelSelection("Baiting")
+            navigateToLevelSelection("baiting")
         }
 
         binding.btnImpersonation.setOnClickListener {
-            navigateToLevelSelection("Impersonation")
+            navigateToLevelSelection("impersonation")
         }
 
         binding.btnCyberbullying.setOnClickListener {
-            navigateToLevelSelection("Cyberbullying")
+            navigateToLevelSelection("cyberbullying")
         }
     }
 
     private fun navigateToLevelSelection(topic: String) {
         // Use the Navigation Component to navigate to the level selection screen
-        val action = TeenSecureTopicSelectionFragmentDirections
-            .actionTeenSecureTopicSelectionFragmentToLevelSelectionFragment(topic)
+        val action = FragmentTopicSelectionDirections
+            .actionFragmentTopicSelectionToFragmentSelectLevel(topic)
         findNavController().navigate(action)
     }
 

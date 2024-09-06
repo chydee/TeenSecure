@@ -53,8 +53,17 @@ class MainActivity : BaseActivity() {
         toolBar.title = title
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        return navController.navigateUp() || super.onSupportNavigateUp()
+    override fun onBackPressed() {
+        val currentFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_content_welcome)
+
+        if (currentFragment !is NavHostFragment) {
+            super.onBackPressed()
+            return
+        }
+
+        if (!navController.popBackStack()) {
+            super.onBackPressed()
+        }
     }
 
     companion object {

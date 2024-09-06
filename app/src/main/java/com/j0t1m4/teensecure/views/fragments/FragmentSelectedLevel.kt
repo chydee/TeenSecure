@@ -9,7 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.j0t1m4.teensecure.R
 import com.j0t1m4.teensecure.data.contents.CourseContent
-import com.j0t1m4.teensecure.data.contents.RansomWranglerCourse
+import com.j0t1m4.teensecure.data.contents.TeenSecureCourse
 import com.j0t1m4.teensecure.databinding.FragmentSelectedLevelBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -30,9 +30,12 @@ class FragmentSelectedLevel : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Assume 'selectedTopic' comes from arguments or user selection
+        val selectedTopic = args.selectedTopic  // You will need to handle topic selection in your app
         handleLevelSelection(args.selectedLevel)
         binding.btnProceed.setOnClickListener {
-            navigateToNextFragment(args.selectedLevel)
+            navigateToNextFragment(selectedTopic, args.selectedLevel)
         }
     }
 
@@ -44,16 +47,52 @@ class FragmentSelectedLevel : Fragment() {
         }
     }
 
-    private fun navigateToNextFragment(level: String) {
+    private fun navigateToNextFragment(topic: String, level: String) {
         var content: CourseContent? = null
-        when (level) {
-            "beginner" -> content = RansomWranglerCourse().level1Content
-            "intermediate" -> content = RansomWranglerCourse().level2Content
-            "professional" -> content = RansomWranglerCourse().level3Content
+
+        when (topic) {
+            "phishing" -> {
+                content = when (level) {
+                    "beginner" -> TeenSecureCourse.phishingBeginner
+                    "intermediate" -> TeenSecureCourse.phishingIntermediate
+                    "professional" -> TeenSecureCourse.phishingAdvanced
+                    else -> null
+                }
+            }
+
+            "baiting" -> {
+                content = when (level) {
+                    "beginner" -> TeenSecureCourse.baitingBeginner
+                    "intermediate" -> TeenSecureCourse.baitingIntermediate
+                    "professional" -> TeenSecureCourse.baitingAdvanced
+                    else -> null
+                }
+            }
+
+            "impersonation" -> {
+                content = when (level) {
+                    "beginner" -> TeenSecureCourse.impersonationBeginner
+                    "intermediate" -> TeenSecureCourse.impersonationIntermediate
+                    "professional" -> TeenSecureCourse.impersonationAdvanced
+                    else -> null
+                }
+            }
+
+            "cyberbullying" -> {
+                content = when (level) {
+                    "beginner" -> TeenSecureCourse.cyberbullyingBeginner
+                    "intermediate" -> TeenSecureCourse.cyberbullyingIntermediate
+                    "professional" -> TeenSecureCourse.cyberbullyingAdvanced
+                    else -> null
+                }
+            }
+            // Add more topics as needed
+            else -> content = null
         }
-        // Navigate to the next fragment
-        if (content != null) {
-            FragmentSelectedLevelDirections.actionFragmentSelectedLevelToFragmentLearningContent(content).apply {
+
+        // Navigate to the next fragment if content is not null
+        content?.let {
+            FragmentSelectedLevelDirections.actionFragmentSelectedLevelToFragmentLearningContent(it).apply {
                 findNavController().navigate(this)
             }
         }

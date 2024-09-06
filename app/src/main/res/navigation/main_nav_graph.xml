@@ -11,17 +11,17 @@
         android:label=""
         tools:layout="@layout/fragment_game_options">
         <action
-            android:id="@+id/action_fragmentGameOptions_to_fragmentSelectLevel"
-            app:destination="@id/fragmentSelectLevel"
-            app:enterAnim="@android:anim/fade_in"
-            app:exitAnim="@android:anim/fade_out"
-            app:popEnterAnim="@android:anim/slide_in_left"
-            app:popExitAnim="@android:anim/slide_out_right"
+            android:id="@+id/action_fragmentGameOptions_to_fragmentRwLevelSelector"
+            app:destination="@id/fragmentRwLevelSelector"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out"
             app:popUpTo="@id/fragmentGameOptions"
             app:popUpToInclusive="false" />
         <action
-            android:id="@+id/action_fragmentGameOptions_to_fragmentRwLevelSelector"
-            app:destination="@id/fragmentRwLevelSelector"
+            android:id="@+id/action_fragmentGameOptions_to_fragmentTopicSelection"
+            app:destination="@id/fragmentTopicSelection"
             app:enterAnim="@android:anim/slide_in_left"
             app:exitAnim="@android:anim/slide_out_right"
             app:popEnterAnim="@android:anim/fade_in"
@@ -36,9 +36,8 @@
         android:label=""
         tools:layout="@layout/fragment_select_level">
         <argument
-            android:name="gameOption"
-            android:defaultValue="0"
-            app:argType="integer" />
+            android:name="topic"
+            app:argType="string" />
         <action
             android:id="@+id/action_fragmentSelectLevel_to_fragmentSelectedLevel"
             app:destination="@id/fragmentSelectedLevel"
@@ -57,6 +56,15 @@
         <argument
             android:name="courseContent"
             app:argType="com.j0t1m4.teensecure.data.contents.CourseContent" />
+        <action
+            android:id="@+id/action_fragmentLearningContent_to_fragmentQuiz"
+            app:destination="@id/fragmentQuiz"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right"
+            app:popUpTo="@id/fragmentLearningContent"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/fragmentSelectedLevel"
@@ -75,11 +83,14 @@
         <argument
             android:name="selectedLevel"
             app:argType="string" />
+        <argument
+            android:name="selectedTopic"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/fragmentRwLevelSelector"
         android:name="com.j0t1m4.teensecure.views.fragments.FragmentRwLevelSelector"
-        android:label="fragment_rw_level_selector"
+        android:label=""
         tools:layout="@layout/fragment_rw_level_selector">
         <action
             android:id="@+id/action_fragmentRwLevelSelector_to_fragmentLearningContent"
@@ -90,5 +101,40 @@
             app:popExitAnim="@android:anim/fade_out"
             app:popUpTo="@id/fragmentRwLevelSelector"
             app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentTopicSelection"
+        android:name="com.j0t1m4.teensecure.views.fragments.FragmentTopicSelection"
+        android:label=""
+        tools:layout="@layout/fragment_topic_selection">
+        <action
+            android:id="@+id/action_fragmentTopicSelection_to_fragmentSelectLevel"
+            app:destination="@id/fragmentSelectLevel"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out"
+            app:popUpTo="@id/fragmentTopicSelection"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentYourScore"
+        android:name="com.j0t1m4.teensecure.views.quiz.FragmentYourScore"
+        android:label=""
+        tools:layout="@layout/fragment_your_score" />
+    <fragment
+        android:id="@+id/fragmentQuiz"
+        android:name="com.j0t1m4.teensecure.views.quiz.FragmentQuiz"
+        android:label=""
+        tools:layout="@layout/fragment_quiz">
+        <action
+            android:id="@+id/action_fragmentQuiz_to_fragmentYourScore"
+            app:destination="@id/fragmentYourScore"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out"
+            app:popUpTo="@id/fragmentQuiz"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

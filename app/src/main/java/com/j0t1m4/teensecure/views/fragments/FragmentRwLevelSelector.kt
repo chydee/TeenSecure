@@ -74,11 +74,11 @@ class FragmentRwLevelSelector : Fragment() {
     private fun navigateToCourseContent(level: Int) {
         var content: CourseContent? = null
         when (level) {
-            1 -> content = RansomWranglerCourse().level1Content
-            2 -> content = RansomWranglerCourse().level2Content
-            3 -> content = RansomWranglerCourse().level3Content
-            4 -> content = RansomWranglerCourse().level4Content
-            5 -> content = RansomWranglerCourse().level5Content
+            1 -> content = RansomWranglerCourse.level1Content
+            2 -> content = RansomWranglerCourse.level2Content
+            3 -> content = RansomWranglerCourse.level3Content
+            4 -> content = RansomWranglerCourse.level4Content
+            5 -> content = RansomWranglerCourse.level5Content
         }
         // Navigate to CourseContentFragment, passing the selected level
         val action = content?.let { FragmentRwLevelSelectorDirections.actionFragmentRwLevelSelectorToFragmentLearningContent(it) }

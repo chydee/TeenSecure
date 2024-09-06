@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F0F2F5"
+    android:background="#F5F5F5"
     android:fillViewport="true"
     android:padding="16dp"
     tools:context=".views.fragments.FragmentLearningContent">
@@ -16,7 +17,7 @@
         <!-- Level Title -->
         <TextView
             android:id="@+id/tv_level_title"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_bold"
             android:textColor="@color/black"
@@ -27,7 +28,7 @@
         <!-- Introduction -->
         <TextView
             android:id="@+id/tv_introduction"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/poppins"
@@ -38,7 +39,7 @@
         <!-- Description -->
         <TextView
             android:id="@+id/tv_description"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/poppins"
@@ -64,26 +65,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:orientation="vertical">
-
-            <!-- Example of a Learning Content item -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                tools:text="1. Introduction to Ransomware Awareness" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:fontFamily="@font/poppins"
-                android:textColor="@color/black"
-                android:textSize="14sp"
-                tools:text="Imagine waking up to find your computer files locked and a message demanding payment to unlock them. This is ransomware, a malicious software that blocks access to your data until a ransom is paid. Ransomware can target anyone, causing significant disruption and stress." />
-        </LinearLayout>
+            android:orientation="vertical"></LinearLayout>
 
         <!-- Tips Section -->
         <TextView
@@ -99,13 +81,30 @@
 
         <TextView
             android:id="@+id/tv_tips"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/poppins"
             android:textColor="@color/black"
             android:textSize="16sp"
             tools:text="Stay vigilant, use strong passwords, keep software updated, and back up your data regularly. These steps can help protect against ransomware and keep your data safe." />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_text_knowledge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:fontFamily="@font/poppins_extrabold"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:text="@string/test_your_knowledge_btn_text"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:backgroundTint="@color/secondaryDarkColor"
+            app:cornerRadius="16dp" />
 
     </LinearLayout>
 </ScrollView>
