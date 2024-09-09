@@ -11,6 +11,7 @@ import com.j0t1m4.teensecure.R
 import com.j0t1m4.teensecure.data.contents.CourseContent
 import com.j0t1m4.teensecure.data.contents.TeenSecureCourse
 import com.j0t1m4.teensecure.databinding.FragmentSelectedLevelBinding
+import com.j0t1m4.teensecure.views.activities.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -30,7 +31,7 @@ class FragmentSelectedLevel : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        (requireActivity() as MainActivity).setToolbarBgColor(R.color.white)
         // Assume 'selectedTopic' comes from arguments or user selection
         val selectedTopic = args.selectedTopic  // You will need to handle topic selection in your app
         handleLevelSelection(args.selectedLevel)

@@ -8,7 +8,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.j0t1m4.teensecure.R
 import com.j0t1m4.teensecure.databinding.FragmentSelectLevelBinding
+import com.j0t1m4.teensecure.views.activities.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -27,6 +29,7 @@ class FragmentSelectLevel : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (requireActivity() as MainActivity).setToolbarBgColor(R.color.secondaryBackground)
         setupClickListeners()
     }
 

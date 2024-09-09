@@ -121,7 +121,14 @@
         android:id="@+id/fragmentYourScore"
         android:name="com.j0t1m4.teensecure.views.quiz.FragmentYourScore"
         android:label=""
-        tools:layout="@layout/fragment_your_score" />
+        tools:layout="@layout/fragment_your_score">
+        <argument
+            android:name="total_scored"
+            app:argType="integer" />
+        <argument
+            android:name="total_questions"
+            app:argType="integer" />
+    </fragment>
     <fragment
         android:id="@+id/fragmentQuiz"
         android:name="com.j0t1m4.teensecure.views.quiz.FragmentQuiz"
@@ -136,5 +143,8 @@
             app:popExitAnim="@android:anim/fade_out"
             app:popUpTo="@id/fragmentQuiz"
             app:popUpToInclusive="true" />
+        <argument
+            android:name="questions"
+            app:argType="com.j0t1m4.teensecure.data.contents.Question[]" />
     </fragment>
 </navigation>

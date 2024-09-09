@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?><!-- res/layout/item_question_type.xml -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:padding="16dp">
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toTopOf="@+id/btn_next"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Common TextView for displaying the question -->
+            <TextView
+                android:id="@+id/questionText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="Question"
+                android:textAppearance="?attr/textAppearanceHeadline6" />
+
+            <!-- Multiple Choice Question Type -->
+            <RadioGroup
+                android:id="@+id/multipleChoiceGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+
+                <RadioButton
+                    android:id="@+id/option1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Option 1" />
+
+                <RadioButton
+                    android:id="@+id/option2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Option 2" />
+
+                <!-- Add more RadioButtons as needed -->
+            </RadioGroup>
+
+            <!-- True or False Question Type -->
+            <LinearLayout
+                android:id="@+id/trueOrFalseLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/trueButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="True"
+                    app:cornerRadius="8dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/falseButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="False"
+                    app:cornerRadius="8dp" />
+
+            </LinearLayout>
+
+            <!-- Matching Question Type -->
+            <LinearLayout
+                android:id="@+id/matchingLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/matchingDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="Match the following:"
+                    android:textAppearance="?attr/textAppearanceSubtitle1" />
+
+                <!-- Dynamically generate matching pairs here -->
+            </LinearLayout>
+
+            <!-- Visual Question Type -->
+            <ImageView
+                android:id="@+id/visualQuestionImage"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginBottom="8dp"
+                android:scaleType="centerCrop"
+                android:visibility="gone" />
+
+            <!-- Buttons for Visual question (e.g., Yes/No for phishing attempts) -->
+            <LinearLayout
+                android:id="@+id/visualQuestionLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <Button
+                    android:id="@+id/visualYesButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Yes" />
+
+                <Button
+                    android:id="@+id/visualNoButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="No" />
+            </LinearLayout>
+
+            <!-- Scenario-Based Question Type -->
+            <LinearLayout
+                android:id="@+id/scenarioBasedLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/scenarioDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="Scenario Description"
+                    android:textAppearance="?attr/textAppearanceSubtitle1" />
+
+                <!-- Options for Scenario-Based questions -->
+                <RadioGroup
+                    android:id="@+id/scenarioOptionsGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <RadioButton
+                        android:id="@+id/scenarioOption1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Option 1" />
+
+                    <RadioButton
+                        android:id="@+id/scenarioOption2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Option 2" />
+
+                    <!-- Add more RadioButtons as needed -->
+                </RadioGroup>
+            </LinearLayout>
+
+            <!-- Multiple Answer Question Type -->
+            <LinearLayout
+                android:id="@+id/multipleAnswerLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <!-- Dynamically generate checkboxes here -->
+                <CheckBox
+                    android:id="@+id/answerOption1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Option 1" />
+
+                <CheckBox
+                    android:id="@+id/answerOption2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Option 2" />
+
+                <!-- Add more CheckBoxes as needed -->
+            </LinearLayout>
+
+            <!-- FillInTheBlank Question Type -->
+            <LinearLayout
+                android:id="@+id/fillInTheBlankLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/fillInBlankInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter your answer here" />
+
+            </LinearLayout>
+
+            <!-- DragAndDrop Question Type -->
+            <LinearLayout
+                android:id="@+id/dragAndDropLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <!-- RecyclerView for draggable items -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewDragAndDrop"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:nestedScrollingEnabled="false" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_bold"
+        android:paddingHorizontal="50dp"
+        android:paddingVertical="8dp"
+        android:text="@string/next_btn_text"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

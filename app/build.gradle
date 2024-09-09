@@ -119,6 +119,8 @@ dependencies {
     // Lottiefiles animation
     implementation 'com.airbnb.android:lottie:6.5.2'
 
+    implementation 'com.github.zhpanvip:viewpagerindicator:1.2.3'
+
 }
 kapt {
     correctErrorTypes true

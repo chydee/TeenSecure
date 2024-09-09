@@ -21,4 +21,7 @@
     <string name="rw_level_4_text">Level 4: Proficient Knowledge (Locked)</string>
     <string name="test_your_knowledge_btn_text">Test Your Knowledge</string>
     <string name="your_score_txt">Your Score</string>
+    <string name="next_btn_text">Next</string>
+    <string name="submit_btn_text">Submit</string>
+    <string name="default_current_quiz_no">1</string>
 </resources>

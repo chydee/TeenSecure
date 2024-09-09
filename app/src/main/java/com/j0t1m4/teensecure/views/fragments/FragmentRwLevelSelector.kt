@@ -14,6 +14,7 @@ import com.j0t1m4.teensecure.data.SharedPreferences
 import com.j0t1m4.teensecure.data.contents.CourseContent
 import com.j0t1m4.teensecure.data.contents.RansomWranglerCourse
 import com.j0t1m4.teensecure.databinding.FragmentRwLevelSelectorBinding
+import com.j0t1m4.teensecure.views.activities.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -35,6 +36,7 @@ class FragmentRwLevelSelector : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (requireActivity() as MainActivity).setToolbarBgColor(R.color.white)
         currentLevel = settingContext.currentLevelRW
         // Update UI based on current level
         updateLevelButtons()

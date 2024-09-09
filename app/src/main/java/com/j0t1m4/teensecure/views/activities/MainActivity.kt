@@ -40,7 +40,7 @@ class MainActivity : BaseActivity() {
         NavigationUI.setupWithNavController(findViewById<MaterialToolbar>(R.id.toolbar), navController, appBarConfiguration)
     }
 
-    fun setupToolbar() {
+    private fun setupToolbar() {
         val toolBar = findViewById<MaterialToolbar>(R.id.toolbar)
         setSupportActionBar(toolBar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -51,6 +51,11 @@ class MainActivity : BaseActivity() {
         supportActionBar?.setDisplayShowTitleEnabled(false)
         supportActionBar?.setDisplayShowHomeEnabled(true)
         toolBar.title = title
+    }
+
+    fun setToolbarBgColor(color: Int) {
+        val toolBar = findViewById<MaterialToolbar>(R.id.toolbar)
+        toolBar.setBackgroundResource(color)
     }
 
     override fun onBackPressed() {

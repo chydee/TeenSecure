@@ -18,7 +18,8 @@ object RansomWranglerCourse {
                 "A friend received an email from what appeared to be their bank, asking to verify account details via a link. Suspicious, they called the bank directly and discovered the email was a phishing attempt. Their caution prevented a potential ransomware attack. Another person regularly backed up their important documents to a cloud service. When ransomware hit, they restored their files from the cloud without paying the ransom."
             ),
         ),
-        tips = "Stay vigilant, use strong passwords, keep software updated, and back up your data regularly. These steps can help protect against ransomware and keep your data safe."
+        tips = "Stay vigilant, use strong passwords, keep software updated, and back up your data regularly. These steps can help protect against ransomware and keep your data safe.",
+        quiz = RwQuestionLists.level1Questions
     )
     val level2Content = CourseContent(
         levelTitle = "LEVEL 2: INTERMEDIATE KNOWLEDGE",
@@ -33,7 +34,8 @@ object RansomWranglerCourse {
             LearningContent("Identifying Phishing Emails", "Phishing emails look legitimate but are designed to trick you into giving up personal information or downloading malware. Always verify the authenticity of emails, especially those requesting sensitive information."),
             LearningContent("Importance of Backups", "Regularly back up your data and store copies in multiple locations. This ensures you can recover your files without paying a ransom if your system gets infected. Periodically test your backups to confirm they work properly."),
         ),
-        tips = "Stay proactive by using multi-factor authentication, updating your software, and backing up your data. These steps will help you stay protected against ransomware."
+        tips = "Stay proactive by using multi-factor authentication, updating your software, and backing up your data. These steps will help you stay protected against ransomware.",
+        quiz = RwQuestionLists.level2Questions
     )
 
     val level3Content = CourseContent(
@@ -72,7 +74,8 @@ object RansomWranglerCourse {
             """.trimIndent()
             ),
         ),
-        tips = ""
+        tips = "",
+        quiz = RwQuestionLists.level3Questions
     )
 
     val level4Content = CourseContent(
@@ -86,7 +89,8 @@ object RansomWranglerCourse {
             LearningContent("Safe Browsing and Email Verification", "Verify the authenticity of email senders before downloading attachments or clicking links. Look for secure websites (HTTPS) at the top of that URL bar when browsing, and avoid suspicious links to reduce the risk of ransomware."),
             LearningContent("Understanding Social Engineering", "Social engineering attacks manipulate individuals into revealing confidential information. Common tactics include phishing emails, pretexting, and baiting. Stay vigilant and verify requests for sensitive information.")
         ),
-        tips = "By mastering these proficient security practices, you'll significantly enhance your defense against ransomware and other cyber threats."
+        tips = "By mastering these proficient security practices, you'll significantly enhance your defense against ransomware and other cyber threats.",
+        quiz = RwQuestionLists.level4Questions
     )
 
     val level5Content = CourseContent(
@@ -100,7 +104,7 @@ object RansomWranglerCourse {
             LearningContent("Advanced Social Engineering Tactics", "Social engineering attacks exploit human behavior to gain access to sensitive information. Examples include phishing, pretexting, and baiting. Stay vigilant and verify requests for information to defend against these attacks."),
             LearningContent("Ransomware Response Plan", "A comprehensive ransomware response plan includes steps for disconnecting infected systems, reporting the incident to authorities, and strategies for data recovery. Regularly review and update your response plan to ensure it's effective.")
         ),
-        tips = "By mastering these expert-level practices, you'll be fully prepared to identify, prevent, and respond to sophisticated ransomware threats, ensuring robust security for your systems and data."
+        tips = "By mastering these expert-level practices, you'll be fully prepared to identify, prevent, and respond to sophisticated ransomware threats, ensuring robust security for your systems and data.", quiz = RwQuestionLists.level5Questions
     )
 
 

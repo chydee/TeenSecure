@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F5F5"
+    android:background="@color/secondaryBackground"
     android:fillViewport="true"
     tools:context=".views.quiz.FragmentQuiz">
 
@@ -43,7 +43,6 @@
             android:id="@+id/instruction_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:fontFamily="@font/poppins_medium"
             android:text="Take this short quiz."
             android:textSize="16sp"
@@ -51,31 +50,102 @@
             app:layout_constraintStart_toStartOf="@+id/title_2"
             app:layout_constraintTop_toBottomOf="@+id/title_2" />
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/question_indicator_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@+id/title_2"
+            app:layout_constraintStart_toStartOf="@+id/instruction_title"
+            app:layout_constraintTop_toBottomOf="@+id/instruction_title">
+
+            <TextView
+                android:id="@+id/question_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Question"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/current_question_index"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/poppins_black"
+                android:gravity="center"
+                android:text="@string/default_current_quiz_no"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="36sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/question_label"
+                app:layout_constraintStart_toEndOf="@+id/question_label"
+                app:layout_constraintTop_toTopOf="@+id/question_label" />
+
+            <TextView
+                android:id="@+id/total_questions_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/poppins"
+                android:gravity="center"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="24sp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="@+id/question_label"
+                app:layout_constraintStart_toEndOf="@+id/current_question_index"
+                app:layout_constraintTop_toTopOf="@+id/question_label"
+                tools:text="/25" />
+
+            <com.zhpan.indicator.IndicatorView
+                android:id="@+id/indicator_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/question_label"
+                app:vpi_slide_mode="smooth"
+                app:vpi_slider_checked_color="@color/primaryColor"
+                app:vpi_slider_normal_color="#0E2333DE"
+                app:vpi_slider_radius="2dp"
+                app:vpi_style="dash" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/question_view_pager"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_submit"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/instruction_title" />
+            app:layout_constraintTop_toBottomOf="@+id/question_indicator_view" />
+
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/materialButton"
+            android:id="@+id/btn_submit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:fontFamily="@font/poppins_bold"
             android:paddingHorizontal="50dp"
             android:paddingVertical="8dp"
-            android:text="Next"
+            android:text="@string/submit_btn_text"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold"
+            android:visibility="gone"
+            app:backgroundTint="@color/secondaryDarkColor"
             app:cornerRadius="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/question_view_pager" />
+            app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

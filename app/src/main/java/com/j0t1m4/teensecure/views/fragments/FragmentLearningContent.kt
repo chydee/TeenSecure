@@ -10,10 +10,12 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.j0t1m4.teensecure.R
 import com.j0t1m4.teensecure.data.contents.LearningContent
 import com.j0t1m4.teensecure.databinding.FragmentLearningContentBinding
+import com.j0t1m4.teensecure.views.activities.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -32,6 +34,7 @@ class FragmentLearningContent : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (requireActivity() as MainActivity).setToolbarBgColor(R.color.secondaryBackground)
         populateScreen()
     }
 
@@ -41,6 +44,11 @@ class FragmentLearningContent : Fragment() {
         binding.tvDescription.text = args.courseContent.description
         binding.tvTips.text = args.courseContent.tips
         addLearningContents(args.courseContent.learningContents, binding.llLearningContents, requireContext())
+        binding.btnTextKnowledge.setOnClickListener {
+            FragmentLearningContentDirections.actionFragmentLearningContentToFragmentQuiz(args.courseContent.quiz.toTypedArray()).apply {
+                findNavController().navigate(this)
+            }
+        }
     }
 
     private fun addLearningContents(learningContents: List<LearningContent>, container: LinearLayout, context: Context) {

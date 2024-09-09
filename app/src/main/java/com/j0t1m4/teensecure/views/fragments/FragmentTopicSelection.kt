@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.j0t1m4.teensecure.R
 import com.j0t1m4.teensecure.databinding.FragmentTopicSelectionBinding
+import com.j0t1m4.teensecure.views.activities.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -25,6 +27,7 @@ class FragmentTopicSelection : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (requireActivity() as MainActivity).setToolbarBgColor(R.color.white)
         // Set up click listeners for each topic
         binding.btnPhishing.setOnClickListener {
             navigateToLevelSelection("phishing")

@@ -5,7 +5,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class CourseContent(
-    val levelTitle: String, val introduction: String, val description: String, val learningContents: List<LearningContent>, val tips: String
+    val levelTitle: String, val introduction: String, val description: String, val learningContents: List<LearningContent>, val tips: String, val quiz: List<Question>
 ) : Parcelable
 
 @Parcelize

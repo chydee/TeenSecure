@@ -7,6 +7,7 @@
     android:background="#F5F5F5"
     android:fillViewport="true"
     android:padding="16dp"
+    android:scrollbars="none"
     tools:context=".views.fragments.FragmentLearningContent">
 
     <LinearLayout
@@ -31,9 +32,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:fontFamily="@font/poppins"
+            android:fontFamily="@font/poppins_bold"
             android:textColor="@color/black"
             android:textSize="16sp"
+            android:textStyle="bold"
             tools:text="Welcome to the Basic Awareness level!" />
 
         <!-- Description -->
