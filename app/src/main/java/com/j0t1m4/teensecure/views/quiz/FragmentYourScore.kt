@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
 import com.j0t1m4.teensecure.R
 import com.j0t1m4.teensecure.databinding.FragmentYourScoreBinding
 import com.j0t1m4.teensecure.views.activities.MainActivity
@@ -15,6 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class FragmentYourScore : Fragment() {
     private lateinit var binding: FragmentYourScoreBinding
+    private val args by navArgs<FragmentYourScoreArgs>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,7 +30,9 @@ class FragmentYourScore : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (requireActivity() as MainActivity).setToolbarBgColor(R.color.secondaryBackground)
-        animateTextViewToNumber(binding.tvTotalPassed, 15)
+        binding.tvTotalPassed.text = args.totalScored.toString()
+        binding.tvTotalQuestions.text = "/100"
+        animateTextViewToNumber(binding.tvTotalPassed, args.totalScored)
     }
 
     // Function to animate the TextView from 1 to the target number

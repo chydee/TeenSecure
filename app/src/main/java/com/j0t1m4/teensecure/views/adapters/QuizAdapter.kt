@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.j0t1m4.teensecure.core.mechanism.Game
 import com.j0t1m4.teensecure.data.contents.Question
 import com.j0t1m4.teensecure.databinding.ItemQuestionTypeBinding
 import com.j0t1m4.teensecure.views.utils.gone
@@ -17,10 +18,15 @@ import timber.log.Timber
 
 class QuizAdapter(
     private val context: Context,
-    private val questions: List<Question>
+    private val questions: List<Question>,
+    private val game: Game,
+    private val navigationHandler: QuizNavigationHandler
 ) : RecyclerView.Adapter<QuizAdapter.QuizViewHolder>() {
 
     inner class QuizViewHolder(private var binding: ItemQuestionTypeBinding) : RecyclerView.ViewHolder(binding.root) {
+        var userAnswer: Any? = null
+        var dragAndDropAdapter: DragAndDropAdapter? = null
+
         fun bind(question: Question) {
             /*Glide.with(context).load(featured.featureImage.mobile*//*"https://bafkreiekthwdyf7s2vx7argthd3juo4vza3ucmhslqdkzbekx463b3sm7a.ipfs.w3s.link"*//*).error(R.drawable.jamit_outside_logo)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -63,6 +69,12 @@ class QuizAdapter(
                         radioButton.text = option
                         radioGroup.addView(radioButton)
                     }
+
+                    // Listen for the user's selection
+                    radioGroup.setOnCheckedChangeListener { group, checkedId ->
+                        val radioButton = group.findViewById<RadioButton>(checkedId)
+                        userAnswer = radioButton.text
+                    }
                 }
 
                 is Question.InteractiveQuiz -> {
@@ -76,6 +88,12 @@ class QuizAdapter(
                         radioButton.text = option
                         radioGroup.addView(radioButton)
                     }
+
+                    // Listen for the user's selection
+                    radioGroup.setOnCheckedChangeListener { group, checkedId ->
+                        val radioButton = group.findViewById<RadioButton>(checkedId)
+                        userAnswer = radioButton.text
+                    }
                 }
 
                 is Question.TrueOrFalse -> {
@@ -84,12 +102,8 @@ class QuizAdapter(
                     val trueButton = binding.trueButton
                     val falseButton = binding.falseButton
 
-                    trueButton.setOnClickListener {
-                        // Handle the 'True' answer selection
-                    }
-                    falseButton.setOnClickListener {
-                        // Handle the 'False' answer selection
-                    }
+                    trueButton.setOnClickListener { userAnswer = "True" }
+                    falseButton.setOnClickListener { userAnswer = "False" }
                 }
 
                 is Question.Matching -> {
@@ -131,17 +145,31 @@ class QuizAdapter(
                         radioButton.text = option
                         binding.scenarioOptionsGroup.addView(radioButton)
                     }
+
+                    binding.scenarioOptionsGroup.setOnCheckedChangeListener { group, checkedId ->
+                        val radioButton = group.findViewById<RadioButton>(checkedId)
+                        userAnswer = radioButton.text
+                    }
                 }
 
                 is Question.MultipleAnswer -> {
                     val multipleAnswerLayout = binding.multipleAnswerLayout
                     multipleAnswerLayout.visible()
                     multipleAnswerLayout.removeAllViews() // Clear existing views
+                    val selectedAnswers = mutableListOf<String>()
 
                     // Dynamically add CheckBoxes for each option
                     question.options.forEach { option ->
                         val checkBox = CheckBox(context)
                         checkBox.text = option
+                        checkBox.setOnCheckedChangeListener { _, isChecked ->
+                            if (isChecked) {
+                                selectedAnswers.add(option)
+                            } else {
+                                selectedAnswers.remove(option)
+                            }
+                            userAnswer = selectedAnswers
+                        }
                         multipleAnswerLayout.addView(checkBox)
                     }
                 }
@@ -153,7 +181,7 @@ class QuizAdapter(
                     val fillInBlankInput = binding.fillInBlankInput
                     fillInBlankInput.setText("") // Clear any previous input
 
-                    // You can capture the user's input here, e.g., when they submit the quiz
+                    userAnswer = fillInBlankInput.text.toString()
                 }
 
                 is Question.DragAndDrop -> {
@@ -163,22 +191,68 @@ class QuizAdapter(
                     val recyclerView = binding.recyclerViewDragAndDrop
 
                     // Initialize the adapter with the list of items
-                    val adapter = DragAndDropAdapter(question.items.toMutableList())
-                    recyclerView.adapter = adapter
+                    dragAndDropAdapter = DragAndDropAdapter(question.items.toMutableList())
+                    recyclerView.adapter = dragAndDropAdapter
                     recyclerView.layoutManager = LinearLayoutManager(context)
                     recyclerView.isNestedScrollingEnabled = false
 
                     // Set up the ItemTouchHelper
-                    val itemTouchHelperCallback = DragItemTouchHelperCallback(adapter)
+                    val itemTouchHelperCallback = DragItemTouchHelperCallback(dragAndDropAdapter!!)
                     val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)
                     itemTouchHelper.attachToRecyclerView(recyclerView)
                 }
-
 
                 else -> {
                     // Default case for unsupported or unknown question types
                     binding.questionText.text = "This question type is not supported."
                 }
+            }
+
+            binding.btnNext.setOnClickListener {
+                // Check if userAnswer matches the correct answer for the current question
+                when (question) {
+                    is Question.MultipleChoice -> {
+                        evaluateAnswer(userAnswer, question.correctAnswer, question.reward)
+                    }
+
+                    is Question.TrueOrFalse -> {
+                        evaluateAnswer(userAnswer, question.correctAnswer, question.reward)
+                    }
+
+                    is Question.ScenarioBased -> {
+                        evaluateAnswer(userAnswer, question.correctAnswer, question.reward)
+                    }
+
+                    is Question.MultipleAnswer -> {
+                        if ((userAnswer as List<*>).containsAll(question.correctAnswers)) {
+                            game.addScore(question.reward, true)
+                        } else {
+                            game.addScore(0, isCorrect = false)
+                        }
+                    }
+
+                    is Question.FillInTheBlank -> {
+                        evaluateAnswer(userAnswer, question.correctAnswer, question.reward)
+                    }
+
+                    is Question.DragAndDrop -> {
+                        userAnswer = dragAndDropAdapter?.getItems()
+                        evaluateAnswer(userAnswer, question.correctOrder, question.reward)
+                    }
+
+                    else -> game.addScore(0, false)
+                }
+
+                // Proceed to the next question or finish the quiz
+                navigationHandler.navigateToNextQuestionOrLevel()
+            }
+        }
+
+        private fun evaluateAnswer(userAnswer: Any?, correctAnswer: Any?, reward: Int) {
+            if (userAnswer == correctAnswer) {
+                game.addScore(reward, isCorrect = true)
+            } else {
+                game.addScore(0, false)
             }
         }
     }
@@ -194,4 +268,8 @@ class QuizAdapter(
     }
 
     override fun getItemCount(): Int = questions.size
+}
+
+interface QuizNavigationHandler {
+    fun navigateToNextQuestionOrLevel()
 }
