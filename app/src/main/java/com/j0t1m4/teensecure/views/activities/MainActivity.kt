@@ -74,11 +74,6 @@ class MainActivity : BaseActivity() {
                 true
             }
 
-            R.id.about -> {
-                navController.navigate(R.id.action_global_fragmentAbout)
-                true
-            }
-
             else -> super.onOptionsItemSelected(item)
         }
     }

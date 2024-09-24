@@ -19,7 +19,7 @@ object RwQuestionLists {
         Question.Matching(
             pairs = mapOf(
                 "Phishing" to "Fake emails to steal information", "Backup" to "Copying data to prevent loss", "Malware" to "Harmful software"
-            ), 20
+            ), reward = 20
         ),
         Question.MultipleAnswer(
             question = "Which of the following are good practices to avoid ransomware? (Select all that apply)", options = listOf("Using strong passwords", "Clicking on unknown links", "Regularly updating software", "Disabling antivirus software"), correctAnswers = listOf("Using strong passwords", "Regularly updating software"), 20
