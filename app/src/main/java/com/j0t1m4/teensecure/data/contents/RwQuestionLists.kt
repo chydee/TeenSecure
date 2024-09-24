@@ -30,8 +30,7 @@ object RwQuestionLists {
             question = "What should you do first if you detect ransomware on your computer?", options = listOf("Pay the ransom", "Disconnect from the internet", "Delete all files", "Contact local media"), correctAnswer = "Disconnect from the internet", 10
         ),
         Question.Visual(
-            imageUrl = R.drawable.fake_website,
-            question = "Is it likely to be a phishing attempt?", correctAnswer = true, 10
+            imageUrl = R.drawable.level_1_question_8, question = "Is it likely to be a phishing attempt?", correctAnswer = true, 10
         ),
         Question.DragAndDrop(
             items = listOf(
@@ -59,7 +58,9 @@ object RwQuestionLists {
         ), Question.TrueOrFalse(
             question = "Public Wi-Fi is safe to use for online banking if you have a strong password.", correctAnswer = false, 5
         ), Question.MultipleAnswer(
-            question = "What actions can help prevent ransomware infections? (Select all that apply)", options = listOf("Regular software updates", "Clicking unknown email links", "Using antivirus software", "Avoiding public Wi-Fi for sensitive transactions"), correctAnswers = listOf("Regular software updates", "Using antivirus software", "Avoiding public Wi-Fi for sensitive transactions"),
+            question = "What actions can help prevent ransomware infections? (Select all that apply)",
+            options = listOf("Regular software updates", "Clicking unknown email links", "Using antivirus software", "Avoiding public Wi-Fi for sensitive transactions"),
+            correctAnswers = listOf("Regular software updates", "Using antivirus software", "Avoiding public Wi-Fi for sensitive transactions"),
             reward = 20
         ), Question.InteractiveQuiz(
             question = "Why is it important to regularly update your software?", options = listOf("To get new features", "To protect against security vulnerabilities", "To increase speed", "To reduce storage space"), correctAnswer = "To protect against security vulnerabilities", reward = 10
@@ -70,8 +71,7 @@ object RwQuestionLists {
                 "Regular updates", "Strong passwords", "Antivirus software"
             ), reward = 20
         ), Question.Visual(
-            imageUrl = R.drawable.fake_website, //TODO Replace with actual image URL
-            question = "Is this email likely to be a phishing attempt?", correctAnswer = true, reward = 10
+            imageUrl = R.drawable.level_2_question_9, question = "Is this email likely to be a phishing attempt?", correctAnswer = true, reward = 10
         )
     )
 
@@ -84,7 +84,8 @@ object RwQuestionLists {
             scenario = "You receive an email from your bank asking to verify your account by clicking a link.",
             question = "What should you do?",
             options = listOf("Click the link and enter your details", "Delete the email", "Contact your bank directly using official contact information", "Forward the email to the bank’s Support"),
-            correctAnswer = "Contact your bank directly using official contact information", reward = 15
+            correctAnswer = "Contact your bank directly using official contact information",
+            reward = 15
         ), Question.FillInTheBlank(
             question = "To protect against ransomware regularly update your __________ and operating system.", correctAnswer = "Software", reward = 20
         ), Question.Matching(
@@ -93,8 +94,7 @@ object RwQuestionLists {
             ), reward = 20
         ), Question.MultipleAnswer(
             question = "Which of the following are steps to take immediately after a ransomware infection is detected? (Select all that apply)", options = listOf("Disconnect from the internet", "Pay the ransom", "Report the attack to authorities", "Restore data from backups"), correctAnswers = listOf(
-                "Disconnect from the internet", "Report the attack to authorities", "Restore data from " +
-                        "backups"
+                "Disconnect from the internet", "Report the attack to authorities", "Restore data from " + "backups"
             ), reward = 20
         ), Question.InteractiveQuiz(
             question = "What is a sign that your system might be vulnerable to ransomware attacks?", options = listOf("Frequent software updates", "Outdated antivirus definitions", "Use of strong passwords", "Multi-factor authentication"), correctAnswer = "Outdated antivirus definitions", reward = 10
@@ -105,8 +105,7 @@ object RwQuestionLists {
                 "Disconnect from the network", "Report the attack", "Seek professional help", "Restore data from backups"
             ), reward = 20
         ), Question.Visual(
-            imageUrl = R.drawable.fake_website, //TODO Replace with actual image URL
-            question = "Which of these browser warnings indicates a potentially dangerous website?", correctAnswer = true, reward = 10
+            imageUrl = R.drawable.level_3_question_9_a, question = "Which of these browser warnings indicates a potentially dangerous website?", correctAnswer = true, reward = 10
         )
     )
 
@@ -134,8 +133,7 @@ object RwQuestionLists {
                 "Enable automatic updates", "Use strong passwords", "Install antivirus software", "Avoid clicking unknown links"
             ), reward = 20
         ), Question.Visual(
-            imageUrl = 0, //TODO Replace with actual image URL
-            question = "Select the icon that represents a secure connection (HTTPS).", correctAnswer = true, reward = 10
+            imageUrl = R.drawable.level_4_question_9_a, question = "Select the icon that represents a secure connection (HTTPS).", correctAnswer = true, reward = 10
         )
     )
 
@@ -153,9 +151,7 @@ object RwQuestionLists {
                 "Firewall" to "Monitors and filters incoming and outgoing network traffic", "Anti-Malware" to "Protects against malicious software", "Encryption" to "Converts data into a secure format"
             ), reward = 20
         ), Question.MultipleAnswer(
-            question = "Which practices can help secure your network against ransomware? (Select all that apply)",
-            options = listOf("Using a strong firewall", "Disabling security features", "Regularly updating software", "Conducting security training"),
-            correctAnswers = listOf("Using a strong firewall", "Regularly updating software", "Conducting security training"), reward = 10
+            question = "Which practices can help secure your network against ransomware? (Select all that apply)", options = listOf("Using a strong firewall", "Disabling security features", "Regularly updating software", "Conducting security training"), correctAnswers = listOf("Using a strong firewall", "Regularly updating software", "Conducting security training"), reward = 10
         ), Question.InteractiveQuiz(
             question = "What should be included in a ransomware response plan?", options = listOf("Steps for disconnecting infected systems", "Methods to pay the ransom", "Procedures for reporting the incident", "Strategies for data recovery"), correctAnswer = "Steps for disconnecting infected systems", reward = 10
         ), Question.DragAndDrop(
@@ -165,8 +161,7 @@ object RwQuestionLists {
                 "Enable automatic updates", "Use strong passwords", "Install antivirus software", "Avoid clicking unknown links"
             ), reward = 20
         ), Question.Visual(
-            imageUrl = 0, // Replace with actual image URL
-            question = "Identify the secure website based on the URL.", correctAnswer = true, reward = 10
+            imageUrl = R.drawable.level_5_question_9, question = "Identify the secure website based on the URL.", correctAnswer = true, reward = 10
         ), Question.FillInTheBlank(
             question = "A __________ attack involves tricking individuals into revealing confidential information.", correctAnswer = "Social engineering attack", reward = 10
         )
