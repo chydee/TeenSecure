@@ -205,11 +205,6 @@ class QuizAdapter(
                     val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)
                     itemTouchHelper.attachToRecyclerView(recyclerView)
                 }
-
-                else -> {
-                    // Default case for unsupported or unknown question types
-                    binding.questionText.text = "This question type is not supported."
-                }
             }
 
             binding.btnNext.setOnClickListener {
@@ -235,6 +230,10 @@ class QuizAdapter(
                         }
                     }
 
+                    is Question.Matching -> {
+                        evaluateAnswer(userAnswer, null, question.reward)
+                    }
+
                     is Question.FillInTheBlank -> {
                         evaluateAnswer(userAnswer, question.correctAnswer, question.reward)
                     }
@@ -253,13 +252,14 @@ class QuizAdapter(
         }
 
         private fun evaluateAnswer(userAnswer: Any?, correctAnswer: Any?, reward: Int) {
-            if (userAnswer == null) {
-                if (userAnswer == correctAnswer) {
+            if (userAnswer != null) {
+                if (correctAnswer == null) {
+                    game.addScore(reward, isCorrect = true)
+                } else if (userAnswer == correctAnswer) {
                     game.addScore(reward, isCorrect = true)
                 } else {
                     game.addScore(0, false)
                 }
-
             }
         }
     }
