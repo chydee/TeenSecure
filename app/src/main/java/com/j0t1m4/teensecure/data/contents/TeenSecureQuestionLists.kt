@@ -36,7 +36,8 @@ object TeenSecureQuestionLists {
                 "Email Phishing" to "Uses emails to trick you into giving away personal information",
                 "Message Phishing" to "Uses messages to trick you into giving away information",
                 "Fake Website" to "Pretends to be a trusted website to steal your information"
-            ), reward = 20
+            ),
+            reward = 20
         ),
         Question.Visual(
             imageUrl = "fake_vs_real_website_example_url", // TODO: Replace with actual image URL

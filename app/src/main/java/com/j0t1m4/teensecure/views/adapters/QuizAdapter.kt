@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.RadioButton
-import android.widget.TextView
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -26,6 +25,8 @@ class QuizAdapter(
     inner class QuizViewHolder(private var binding: ItemQuestionTypeBinding) : RecyclerView.ViewHolder(binding.root) {
         var userAnswer: Any? = null
         var dragAndDropAdapter: DragAndDropAdapter? = null
+        var matchingAdapter: MatchingAdapter? = null
+
 
         fun bind(question: Question) {
             /*Glide.with(context).load(featured.featureImage.mobile*//*"https://bafkreiekthwdyf7s2vx7argthd3juo4vza3ucmhslqdkzbekx463b3sm7a.ipfs.w3s.link"*//*).error(R.drawable.jamit_outside_logo)
@@ -54,7 +55,6 @@ class QuizAdapter(
                 is Question.FillInTheBlank -> question.question
                 is Question.InteractiveQuiz -> question.question
                 is Question.DragAndDrop -> "Arrange the items in the correct order:"
-                else -> "Unknown Question Type"
             }
 
             when (question) {
@@ -111,12 +111,16 @@ class QuizAdapter(
                     matchingLayout.visible()
                     matchingLayout.removeAllViews() // Clear existing views
 
-                    // Dynamically add matching pairs
-                    question.pairs.forEach { (left, right) ->
-                        val textView = TextView(context)
-                        textView.text = "$left - $right"
-                        matchingLayout.addView(textView)
+                    // Initialize the RecyclerView for matching question
+                    matchingAdapter = MatchingAdapter(question.pairs.toList())
+                    val recyclerView = binding.recyclerViewMatchingPairs
+                    recyclerView.apply {
+                        adapter = matchingAdapter
+                        layoutManager = LinearLayoutManager(context)
+                        isNestedScrollingEnabled = false
                     }
+                    // Collect the user's answers from the matching adapter
+                    userAnswer = matchingAdapter?.getUserMatches()
                 }
 
                 is Question.Visual -> {
@@ -249,10 +253,13 @@ class QuizAdapter(
         }
 
         private fun evaluateAnswer(userAnswer: Any?, correctAnswer: Any?, reward: Int) {
-            if (userAnswer == correctAnswer) {
-                game.addScore(reward, isCorrect = true)
-            } else {
-                game.addScore(0, false)
+            if (userAnswer == null) {
+                if (userAnswer == correctAnswer) {
+                    game.addScore(reward, isCorrect = true)
+                } else {
+                    game.addScore(0, false)
+                }
+
             }
         }
     }

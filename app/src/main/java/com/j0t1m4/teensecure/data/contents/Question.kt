@@ -23,6 +23,11 @@ sealed class Question : Parcelable {
     @Parcelize
     data class Matching(
         val pairs: Map<String, String>, // Left side to right side matching
+        val correctAnswer: Map<String, String> = mapOf(
+            "Email Phishing" to "Uses emails to trick you into giving away personal information",
+            "Message Phishing" to "Uses messages to trick you into giving away information",
+            "Fake Website" to "Pretends to be a trusted website to steal your information"
+        ),
         val reward: Int
     ) : Question()
 
