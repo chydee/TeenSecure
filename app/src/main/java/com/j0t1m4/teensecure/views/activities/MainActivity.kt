@@ -4,6 +4,9 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -32,8 +35,7 @@ class MainActivity : BaseActivity() {
         navHostFragment = supportFragmentManager.findFragmentById(R.id.fragment_container) as NavHostFragment
         navController = navHostFragment.navController
         val appBarConfiguration = AppBarConfiguration(
-            topLevelDestinationIds = setOf(),
-            fallbackOnNavigateUpListener = ::onSupportNavigateUp
+            topLevelDestinationIds = setOf(), fallbackOnNavigateUpListener = ::onSupportNavigateUp
         )
         setupToolbar()
         navController.enableOnBackPressed(true)
@@ -58,6 +60,29 @@ class MainActivity : BaseActivity() {
         toolBar.setBackgroundResource(color)
     }
 
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater: MenuInflater = menuInflater
+        inflater.inflate(R.menu.app_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle item selection.
+        return when (item.itemId) {
+            R.id.profile -> {
+                navController.navigate(R.id.action_global_fragmentProfile)
+                true
+            }
+
+            R.id.about -> {
+                navController.navigate(R.id.action_global_fragmentAbout)
+                true
+            }
+
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
     override fun onBackPressed() {
         val currentFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_content_welcome)
 
@@ -72,9 +97,8 @@ class MainActivity : BaseActivity() {
     }
 
     companion object {
-        fun open(context: Context) =
-            context.startActivity(
-                Intent(context, MainActivity::class.java)
-            )
+        fun open(context: Context) = context.startActivity(
+            Intent(context, MainActivity::class.java)
+        )
     }
 }

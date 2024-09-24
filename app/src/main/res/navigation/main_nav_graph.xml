@@ -147,4 +147,30 @@
             android:name="questions"
             app:argType="com.j0t1m4.teensecure.data.contents.Question[]" />
     </fragment>
+    <fragment
+        android:id="@+id/fragmentAbout"
+        android:name="com.j0t1m4.teensecure.views.fragments.FragmentAbout"
+        android:label="fragment_about"
+        tools:layout="@layout/fragment_about" />
+    <action
+        android:id="@+id/action_global_fragmentAbout"
+        app:destination="@id/fragmentAbout"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+        app:popExitAnim="@anim/nav_default_pop_exit_anim"
+        app:popUpTo="@id/main_nav_graph.xml" />
+    <fragment
+        android:id="@+id/fragmentProfile"
+        android:name="com.j0t1m4.teensecure.views.fragments.FragmentProfile"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <action
+        android:id="@+id/action_global_fragmentProfile"
+        app:destination="@id/fragmentProfile"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+        app:popExitAnim="@anim/nav_default_pop_exit_anim"
+        app:popUpTo="@id/main_nav_graph.xml" />
 </navigation>
