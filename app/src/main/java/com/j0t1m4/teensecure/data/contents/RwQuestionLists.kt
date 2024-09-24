@@ -1,5 +1,7 @@
 package com.j0t1m4.teensecure.data.contents
 
+import com.j0t1m4.teensecure.R
+
 object RwQuestionLists {
 
     // Level 1: Basic Awareness
@@ -28,7 +30,7 @@ object RwQuestionLists {
             question = "What should you do first if you detect ransomware on your computer?", options = listOf("Pay the ransom", "Disconnect from the internet", "Delete all files", "Contact local media"), correctAnswer = "Disconnect from the internet", 10
         ),
         Question.Visual(
-            imageUrl = "email_screenshot_url", //TODO replace with actual image URL
+            imageUrl = R.drawable.fake_website,
             question = "Is it likely to be a phishing attempt?", correctAnswer = true, 10
         ),
         Question.DragAndDrop(
@@ -68,7 +70,7 @@ object RwQuestionLists {
                 "Regular updates", "Strong passwords", "Antivirus software"
             ), reward = 20
         ), Question.Visual(
-            imageUrl = "phishing_email_example_url", //TODO Replace with actual image URL
+            imageUrl = R.drawable.fake_website, //TODO Replace with actual image URL
             question = "Is this email likely to be a phishing attempt?", correctAnswer = true, reward = 10
         )
     )
@@ -103,7 +105,7 @@ object RwQuestionLists {
                 "Disconnect from the network", "Report the attack", "Seek professional help", "Restore data from backups"
             ), reward = 20
         ), Question.Visual(
-            imageUrl = "browser_warning_example_url", //TODO Replace with actual image URL
+            imageUrl = R.drawable.fake_website, //TODO Replace with actual image URL
             question = "Which of these browser warnings indicates a potentially dangerous website?", correctAnswer = true, reward = 10
         )
     )
@@ -132,7 +134,7 @@ object RwQuestionLists {
                 "Enable automatic updates", "Use strong passwords", "Install antivirus software", "Avoid clicking unknown links"
             ), reward = 20
         ), Question.Visual(
-            imageUrl = "secure_connection_example_url", //TODO Replace with actual image URL
+            imageUrl = 0, //TODO Replace with actual image URL
             question = "Select the icon that represents a secure connection (HTTPS).", correctAnswer = true, reward = 10
         )
     )
@@ -163,7 +165,7 @@ object RwQuestionLists {
                 "Enable automatic updates", "Use strong passwords", "Install antivirus software", "Avoid clicking unknown links"
             ), reward = 20
         ), Question.Visual(
-            imageUrl = "secure_website_example_url", // Replace with actual image URL
+            imageUrl = 0, // Replace with actual image URL
             question = "Identify the secure website based on the URL.", correctAnswer = true, reward = 10
         ), Question.FillInTheBlank(
             question = "A __________ attack involves tricking individuals into revealing confidential information.", correctAnswer = "Social engineering attack", reward = 10

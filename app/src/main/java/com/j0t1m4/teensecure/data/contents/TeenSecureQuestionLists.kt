@@ -1,5 +1,7 @@
 package com.j0t1m4.teensecure.data.contents
 
+import com.j0t1m4.teensecure.R
+
 object TeenSecureQuestionLists {
 
     // Topic: Phishing
@@ -40,7 +42,7 @@ object TeenSecureQuestionLists {
             reward = 20
         ),
         Question.Visual(
-            imageUrl = "fake_vs_real_website_example_url", // TODO: Replace with actual image URL
+            imageUrl = R.drawable.fake_website, // TODO: Replace with actual image URL
             question = "Identify the fake website.",
             correctAnswer = true, reward = 10
         ),
@@ -98,7 +100,7 @@ object TeenSecureQuestionLists {
             ), reward = 20
         ),
         Question.Visual(
-            imageUrl = "fake_vs_real_login_example_url", // TODO: Replace with actual image URL
+            imageUrl = R.drawable.fb_login_phishing_intermediate, // TODO: Replace with actual image URL
             question = "Identify the fake login page.",
             correctAnswer = true, reward = 10
         ),
@@ -155,7 +157,7 @@ object TeenSecureQuestionLists {
             ), reward = 20
         ),
         Question.Visual(
-            imageUrl = "fake_job_offer_example_url", // TODO: Replace with actual image URL
+            imageUrl = R.drawable.fake_website, // TODO: Replace with actual image URL
             question = "Identify the phishing message.",
             correctAnswer = true, reward = 10
         ),
@@ -215,7 +217,7 @@ object TeenSecureQuestionLists {
             ), reward = 20
         ),
         Question.Visual(
-            imageUrl = "baiting_link_example_url", // TODO: Replace with actual image URL
+            imageUrl = R.drawable.fb_login_phishing_intermediate, // TODO: Replace with actual image URL
             question = "Identify the baiting link.",
             correctAnswer = true, reward = 10
         ),
@@ -272,7 +274,7 @@ object TeenSecureQuestionLists {
             ), reward = 20
         ),
         Question.Visual(
-            imageUrl = "baiting_download_link_example_url", // TODO: Replace with actual image URL
+            imageUrl = R.drawable.fake_website, // TODO: Replace with actual image URL
             question = "Identify the baiting download link.",
             correctAnswer = true, reward = 10
         ),
@@ -329,7 +331,7 @@ object TeenSecureQuestionLists {
             ), reward = 20
         ),
         Question.Visual(
-            imageUrl = "fake_cloud_storage_example_url", // TODO: Replace with actual image URL
+            imageUrl = R.drawable.fake_website, // TODO: Replace with actual image URL
             question = "Identify the fake website.",
             correctAnswer = true, reward = 10
         ),
@@ -389,7 +391,7 @@ object TeenSecureQuestionLists {
             ), reward = 20
         ),
         Question.Visual(
-            imageUrl = "fake_vs_real_profile_example_url", // TODO: Replace with actual image URL
+            imageUrl = R.drawable.fb_login_phishing_intermediate, // TODO: Replace with actual image URL
             question = "Identify the impersonation profile.",
             correctAnswer = true, reward = 10
         ),
@@ -445,7 +447,7 @@ object TeenSecureQuestionLists {
             ), reward = 20
         ),
         Question.Visual(
-            imageUrl = "well_crafted_profile_example_url", // TODO: Replace with actual image URL
+            imageUrl = R.drawable.fake_website, // TODO: Replace with actual image URL
             question = "Identify the impersonation profile.",
             correctAnswer = true, reward = 10
         ),
@@ -501,7 +503,7 @@ object TeenSecureQuestionLists {
             ), reward = 20
         ),
         Question.Visual(
-            imageUrl = "highly_believable_profile_example_url", // TODO: Replace with actual image URL
+            imageUrl = R.drawable.fake_website, // TODO: Replace with actual image URL
             question = "Identify the highly believable impersonation profile.",
             correctAnswer = true, reward = 10
         ),
@@ -560,7 +562,7 @@ object TeenSecureQuestionLists {
             ), reward = 20
         ),
         Question.Visual(
-            imageUrl = "cyberbullying_post_example_url", // TODO: Replace with actual image URL
+            imageUrl = R.drawable.cb_1, // TODO: Replace with actual image URL
             question = "Identify the cyberbullying post.",
             correctAnswer = true, reward = 10
         ),
@@ -616,7 +618,7 @@ object TeenSecureQuestionLists {
             ), reward = 20
         ),
         Question.Visual(
-            imageUrl = "group_bullying_example_url", // TODO: Replace with actual image URL
+            imageUrl = R.drawable.cb_2, // TODO: Replace with actual image URL
             question = "Identify the group bullying set.",
             correctAnswer = true, reward = 10
         ),
@@ -672,7 +674,7 @@ object TeenSecureQuestionLists {
             ), reward = 20
         ),
         Question.Visual(
-            imageUrl = "advanced_cyberbullying_example_url", // TODO: Replace with actual image URL
+            imageUrl = R.drawable.cb_3, // TODO: Replace with actual image URL
             question = "Identify the advanced cyberbullying example.",
             correctAnswer = true, reward = 10
         ),

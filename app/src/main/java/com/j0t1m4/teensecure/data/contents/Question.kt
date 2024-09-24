@@ -38,7 +38,7 @@ sealed class Question : Parcelable {
 
     @Parcelize
     data class Visual(
-        val imageUrl: String, val question: String, val correctAnswer: Boolean, val reward: Int
+        val imageUrl: Int, val question: String, val correctAnswer: Boolean, val reward: Int
     ) : Question()
 
     @Parcelize

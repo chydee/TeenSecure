@@ -1,13 +1,19 @@
 package com.j0t1m4.teensecure.views.adapters
 
+
 import android.content.Context
+import android.os.Build
+import android.os.VibrationEffect
+import android.os.Vibrator
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.RadioButton
+import android.widget.Toast
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.j0t1m4.teensecure.core.mechanism.Game
 import com.j0t1m4.teensecure.data.contents.Question
 import com.j0t1m4.teensecure.databinding.ItemQuestionTypeBinding
@@ -16,10 +22,7 @@ import com.j0t1m4.teensecure.views.utils.visible
 import timber.log.Timber
 
 class QuizAdapter(
-    private val context: Context,
-    private val questions: List<Question>,
-    private val game: Game,
-    private val navigationHandler: QuizNavigationHandler
+    private val context: Context, private val questions: List<Question>, private val game: Game, private val navigationHandler: QuizNavigationHandler
 ) : RecyclerView.Adapter<QuizAdapter.QuizViewHolder>() {
 
     inner class QuizViewHolder(private var binding: ItemQuestionTypeBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -28,8 +31,7 @@ class QuizAdapter(
         var matchingAdapter: MatchingAdapter? = null
 
 
-        fun bind(question: Question) {
-            /*Glide.with(context).load(featured.featureImage.mobile*//*"https://bafkreiekthwdyf7s2vx7argthd3juo4vza3ucmhslqdkzbekx463b3sm7a.ipfs.w3s.link"*//*).error(R.drawable.jamit_outside_logo)
+        fun bind(question: Question) {/*Glide.with(context).load(featured.featureImage.mobile*//*"https://bafkreiekthwdyf7s2vx7argthd3juo4vza3ucmhslqdkzbekx463b3sm7a.ipfs.w3s.link"*//*).error(R.drawable.jamit_outside_logo)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(binding.featureImage)*/
             // Here, you'll use different layouts depending on question type
@@ -106,10 +108,27 @@ class QuizAdapter(
                     falseButton.setOnClickListener { userAnswer = "False" }
                 }
 
+                is Question.DragAndDrop -> {
+                    val dragAndDropLayout = binding.dragAndDropLayout
+                    dragAndDropLayout.visible()
+
+                    val recyclerView = binding.recyclerViewDragAndDrop
+
+                    // Initialize the adapter with the list of items
+                    dragAndDropAdapter = DragAndDropAdapter(question.items.toMutableList())
+                    recyclerView.adapter = dragAndDropAdapter
+                    recyclerView.layoutManager = LinearLayoutManager(context)
+                    recyclerView.isNestedScrollingEnabled = false
+
+                    // Set up the ItemTouchHelper
+                    val itemTouchHelperCallback = DragItemTouchHelperCallback(dragAndDropAdapter!!)
+                    val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)
+                    itemTouchHelper.attachToRecyclerView(recyclerView)
+                }
+
                 is Question.Matching -> {
                     val matchingLayout = binding.matchingLayout
                     matchingLayout.visible()
-                    matchingLayout.removeAllViews() // Clear existing views
 
                     // Initialize the RecyclerView for matching question
                     matchingAdapter = MatchingAdapter(question.pairs.toList())
@@ -127,13 +146,13 @@ class QuizAdapter(
                     val visualImageView = binding.visualQuestionImage
                     visualImageView.visible()
                     // Use Glide or Picasso to load the image from URL
-                    // Glide.with(holder.itemView.context).load(question.imageUrl).into(visualImageView)
+                    Glide.with(visualImageView.context).load(question.imageUrl).into(visualImageView)
                     binding.visualQuestionLayout.visible()
                     binding.visualYesButton.setOnClickListener {
-                        // Handle the 'Yes' answer selection
+                        userAnswer = "True"
                     }
                     binding.visualNoButton.setOnClickListener {
-                        // Handle the 'No' answer selection
+                        userAnswer = "False"
                     }
                 }
 
@@ -187,24 +206,6 @@ class QuizAdapter(
 
                     userAnswer = fillInBlankInput.text.toString()
                 }
-
-                is Question.DragAndDrop -> {
-                    val dragAndDropLayout = binding.dragAndDropLayout
-                    dragAndDropLayout.visible()
-
-                    val recyclerView = binding.recyclerViewDragAndDrop
-
-                    // Initialize the adapter with the list of items
-                    dragAndDropAdapter = DragAndDropAdapter(question.items.toMutableList())
-                    recyclerView.adapter = dragAndDropAdapter
-                    recyclerView.layoutManager = LinearLayoutManager(context)
-                    recyclerView.isNestedScrollingEnabled = false
-
-                    // Set up the ItemTouchHelper
-                    val itemTouchHelperCallback = DragItemTouchHelperCallback(dragAndDropAdapter!!)
-                    val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)
-                    itemTouchHelper.attachToRecyclerView(recyclerView)
-                }
             }
 
             binding.btnNext.setOnClickListener {
@@ -215,6 +216,10 @@ class QuizAdapter(
                     }
 
                     is Question.TrueOrFalse -> {
+                        evaluateAnswer(userAnswer, question.correctAnswer, question.reward)
+                    }
+
+                    is Question.Visual -> {
                         evaluateAnswer(userAnswer, question.correctAnswer, question.reward)
                     }
 
@@ -243,11 +248,8 @@ class QuizAdapter(
                         evaluateAnswer(userAnswer, question.correctOrder, question.reward)
                     }
 
-                    else -> game.addScore(0, false)
+                    else -> evaluateAnswer(null, null, 0)
                 }
-
-                // Proceed to the next question or finish the quiz
-                navigationHandler.navigateToNextQuestionOrLevel()
             }
         }
 
@@ -260,6 +262,11 @@ class QuizAdapter(
                 } else {
                     game.addScore(0, false)
                 }
+                // Proceed to the next question or finish the quiz
+                navigationHandler.navigateToNextQuestionOrLevel()
+            } else {
+                vibratePhone()
+                Toast.makeText(context, "Please select an answer to continue!", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -275,6 +282,22 @@ class QuizAdapter(
     }
 
     override fun getItemCount(): Int = questions.size
+
+    private fun vibratePhone() {
+        // Get the vibrator service
+        val vibrator = context.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+
+        // Check if the device has a vibrator
+        if (vibrator.hasVibrator()) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                // For Android Oreo and above
+                vibrator.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE))
+            } else {
+                // For devices below Android Oreo
+                vibrator.vibrate(500)
+            }
+        }
+    }
 }
 
 interface QuizNavigationHandler {

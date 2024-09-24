@@ -33,7 +33,7 @@ class MatchingAdapter(private val pairs: List<Pair<String, String>>) : RecyclerV
             // Populate the dropdown (Spinner) with the possible answers (right-side values)
             val adapter = ArrayAdapter(
                 binding.root.context,
-                android.R.layout.simple_spinner_dropdown_item,
+                android.R.layout.simple_spinner_item,
                 pairs.map { it.second }
             )
             binding.matchDropdown.adapter = adapter
