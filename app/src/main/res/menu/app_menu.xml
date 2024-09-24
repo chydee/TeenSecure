@@ -6,8 +6,4 @@
         android:icon="@drawable/account_circle_32dp_e8eaed_fill0_wght400_grad0_opsz40"
         android:title="@string/profile"
         app:showAsAction="ifRoom" />
-    <item
-        android:id="@+id/about"
-        android:icon="@drawable/lightbulb_32dp_e8eaed_fill0_wght400_grad0_opsz40"
-        android:title="@string/about_btn_label" />
 </menu>
