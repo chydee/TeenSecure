@@ -99,4 +99,12 @@ class FragmentQuiz : Fragment(), QuizNavigationHandler {
         }
     }
 
+    override fun navigateToPreviousQuestionOrLevel() {
+        if (binding.questionViewPager.currentItem > 1) {
+            binding.questionViewPager.currentItem = binding.questionViewPager.currentItem - 1
+            currentPage = binding.questionViewPager.currentItem - 1
+            binding.currentQuestionIndex.text = currentPage.toString()
+        }
+    }
+
 }

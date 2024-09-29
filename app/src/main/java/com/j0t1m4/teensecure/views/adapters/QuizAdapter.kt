@@ -2,6 +2,9 @@ package com.j0t1m4.teensecure.views.adapters
 
 
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.Canvas
 import android.os.Build
 import android.os.VibrationEffect
 import android.os.Vibrator
@@ -31,11 +34,7 @@ class QuizAdapter(
         var matchingAdapter: MatchingAdapter? = null
 
 
-        fun bind(question: Question) {/*Glide.with(context).load(featured.featureImage.mobile*//*"https://bafkreiekthwdyf7s2vx7argthd3juo4vza3ucmhslqdkzbekx463b3sm7a.ipfs.w3s.link"*//*).error(R.drawable.jamit_outside_logo)
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .into(binding.featureImage)*/
-            // Here, you'll use different layouts depending on question type
-            // Hide all views initially
+        fun bind(question: Question) {
             binding.apply {
                 multipleChoiceGroup.gone()
                 trueOrFalseLayout.gone()
@@ -298,6 +297,29 @@ class QuizAdapter(
             }
         }
     }
+
+    fun combineImages(context: Context, leftImageResId: Int, rightImageResId: Int): Bitmap {
+        // Load the two images as bitmaps
+        val leftBitmap = BitmapFactory.decodeResource(context.resources, leftImageResId)
+        val rightBitmap = BitmapFactory.decodeResource(context.resources, rightImageResId)
+
+        // Get the width and height of both images
+        val width = leftBitmap.width + rightBitmap.width
+        val height = maxOf(leftBitmap.height, rightBitmap.height)
+
+        // Create a new bitmap with combined width and maximum height
+        val combinedBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
+
+        // Create a canvas to draw the bitmaps
+        val canvas = Canvas(combinedBitmap)
+        // Draw the first image (left) at position (0, 0)
+        canvas.drawBitmap(leftBitmap, 0f, 0f, null)
+        // Draw the second image (right) at position (leftBitmap.width, 0)
+        canvas.drawBitmap(rightBitmap, leftBitmap.width.toFloat(), 0f, null)
+
+        return combinedBitmap
+    }
+
 }
 
 interface QuizNavigationHandler {
