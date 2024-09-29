@@ -29,4 +29,5 @@
     <string name="motivation">\"When we are motivated by goals that have deep meaning, by dreams that need completion, by pure love that needs expressing, then we truly live life\"</string>
     <string name="about_app">About</string>
     <string name="profile">My Profile</string>
+    <string name="btn_previous_text">Previous</string>
 </resources>

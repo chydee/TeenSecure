@@ -302,4 +302,5 @@ class QuizAdapter(
 
 interface QuizNavigationHandler {
     fun navigateToNextQuestionOrLevel()
+    fun navigateToPreviousQuestionOrLevel()
 }

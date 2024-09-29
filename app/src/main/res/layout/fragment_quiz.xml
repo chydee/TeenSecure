@@ -10,13 +10,14 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="20dp">
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/title_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="20dp"
             android:fontFamily="@font/poppins_black"
             android:text="Test Your"
             android:textColor="@color/primaryTextColor"
@@ -30,6 +31,7 @@
             android:id="@+id/title_2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
             android:fontFamily="@font/poppins_black"
             android:text="Knowledge"
             android:textColor="@color/primaryColor"
@@ -117,16 +119,25 @@
                 app:vpi_style="dash" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/question_view_pager"
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginHorizontal="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
+            android:elevation="8dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp"
             app:layout_constraintBottom_toTopOf="@+id/btn_submit"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/question_indicator_view" />
+            app:layout_constraintTop_toBottomOf="@+id/question_indicator_view">
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/question_view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="0dp" />
+        </com.google.android.material.card.MaterialCardView>
 
 
         <com.google.android.material.button.MaterialButton
