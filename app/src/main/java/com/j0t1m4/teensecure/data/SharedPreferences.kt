@@ -33,6 +33,14 @@ class SharedPreferences(applicationContext: Context) {
         get() = config.getInt(KEY_CURRENT_LEVEL_RW, 1)
         set(value) = config.edit().putInt(KEY_CURRENT_LEVEL_RW, value).apply()
 
+    var username: String?
+        get() = config.getString(KEY_USERNAME, null)
+        set(value) = config.edit().putString(KEY_USERNAME, value).apply()
+
+    var currentGame: String?
+        get() = config.getString(KEY_CURRENT_GAME, null)
+        set(value) = config.edit().putString(KEY_CURRENT_GAME, value).apply()
+
 
     fun clearAllStoredData() {
         config.edit().clear().apply()
@@ -45,5 +53,7 @@ class SharedPreferences(applicationContext: Context) {
         private const val KEY_CURRENT_SCORE = "key_user_current_score"
         private const val KEY_CURRENT_LEVEL_TS = "key_user_current_level_teen_secure"
         private const val KEY_CURRENT_LEVEL_RW = "key_user_current_level_ransom_wrangler"
+        private const val KEY_USERNAME = "key_user_username"
+        private const val KEY_CURRENT_GAME = "key_user_current_game"
     }
 }

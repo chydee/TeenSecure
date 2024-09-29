@@ -28,6 +28,9 @@
             app:popExitAnim="@android:anim/slide_out_right"
             app:popUpTo="@id/fragmentWelcome"
             app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_fragmentWelcome_to_bottomSheetUserName"
+            app:destination="@id/bottomSheetUserName" />
     </fragment>
     <fragment
         android:id="@+id/fragmentAbout"
@@ -39,4 +42,19 @@
         android:name="com.j0t1m4.teensecure.views.activities.MainActivity"
         android:label="activity_main"
         tools:layout="@layout/activity_main" />
+    <dialog
+        android:id="@+id/bottomSheetUserName"
+        android:name="com.j0t1m4.teensecure.views.fragments.BottomSheetUserName"
+        android:label="bottom_sheet_user_name"
+        tools:layout="@layout/bottom_sheet_user_name">
+        <action
+            android:id="@+id/action_bottomSheetUserName_to_mainActivity"
+            app:destination="@id/mainActivity"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right"
+            app:popUpTo="@id/welcome_nav_graph.xml"
+            app:popUpToInclusive="false" />
+    </dialog>
 </navigation>

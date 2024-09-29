@@ -31,8 +31,14 @@ class FragmentWelcome : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnStart.setOnClickListener {
-            FragmentWelcomeDirections.actionFragmentWelcomeToMainActivity().apply {
-                findNavController().navigate(this)
+            if (settingContext.username.isNullOrEmpty()) {
+                FragmentWelcomeDirections.actionFragmentWelcomeToBottomSheetUserName().apply {
+                    findNavController().navigate(this)
+                }
+            } else {
+                FragmentWelcomeDirections.actionFragmentWelcomeToMainActivity().apply {
+                    findNavController().navigate(this)
+                }
             }
         }
         binding.btnAbout.setOnClickListener {
