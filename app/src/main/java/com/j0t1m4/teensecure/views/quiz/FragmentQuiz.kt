@@ -100,9 +100,10 @@ class FragmentQuiz : Fragment(), QuizNavigationHandler {
     }
 
     override fun navigateToPreviousQuestionOrLevel() {
-        if (binding.questionViewPager.currentItem > 1) {
+        // Navigate to the previous question
+        if (binding.questionViewPager.currentItem > 0) {
             binding.questionViewPager.currentItem = binding.questionViewPager.currentItem - 1
-            currentPage = binding.questionViewPager.currentItem - 1
+            currentPage = binding.questionViewPager.currentItem + 1
             binding.currentQuestionIndex.text = currentPage.toString()
         }
     }

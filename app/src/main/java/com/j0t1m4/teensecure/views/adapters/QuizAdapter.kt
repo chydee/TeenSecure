@@ -207,6 +207,11 @@ class QuizAdapter(
                 }
             }
 
+            binding.btnPrevious.setOnClickListener {
+                // Proceed to the previous question
+                navigationHandler.navigateToPreviousQuestionOrLevel()
+            }
+
             binding.btnNext.setOnClickListener {
                 // Check if userAnswer matches the correct answer for the current question
                 when (question) {
