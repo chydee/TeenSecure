@@ -29,9 +29,9 @@ class QuizAdapter(
 ) : RecyclerView.Adapter<QuizAdapter.QuizViewHolder>() {
 
     inner class QuizViewHolder(private var binding: ItemQuestionTypeBinding) : RecyclerView.ViewHolder(binding.root) {
-        var userAnswer: Any? = null
-        var dragAndDropAdapter: DragAndDropAdapter? = null
-        var matchingAdapter: MatchingAdapter? = null
+        private var userAnswer: Any? = null
+        private var dragAndDropAdapter: DragAndDropAdapter? = null
+        private var matchingAdapter: MatchingAdapter? = null
 
 
         fun bind(question: Question) {
@@ -207,6 +207,20 @@ class QuizAdapter(
                 }
             }
 
+            // Check if this is the first question, hide the "Previous" button
+            if (bindingAdapterPosition == 0) {
+                binding.btnPrevious.gone()  // Hide the Previous button
+            } else {
+                binding.btnPrevious.visible()  // Show the Previous button
+            }
+
+            // Check if this is the last question
+            if (bindingAdapterPosition == questions.size - 1) {
+                binding.btnNext.text = "Submit"
+            } else {
+                binding.btnNext.text = "Next"
+            }
+
             binding.btnPrevious.setOnClickListener {
                 // Proceed to the previous question
                 navigationHandler.navigateToPreviousQuestionOrLevel()
@@ -260,7 +274,7 @@ class QuizAdapter(
         private fun evaluateAnswer(userAnswer: Any?, correctAnswer: Any?, reward: Int) {
             if (userAnswer != null) {
                 if (correctAnswer == null) {
-                    game.addScore(reward, isCorrect = true)
+                    game.addScore(reward, isCorrect = false)
                 } else if (userAnswer == correctAnswer) {
                     game.addScore(reward, isCorrect = true)
                 } else {
@@ -288,17 +302,12 @@ class QuizAdapter(
     override fun getItemCount(): Int = questions.size
 
     private fun vibratePhone() {
-        // Get the vibrator service
         val vibrator = context.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-
-        // Check if the device has a vibrator
         if (vibrator.hasVibrator()) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                // For Android Oreo and above
                 vibrator.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE))
             } else {
-                // For devices below Android Oreo
-                vibrator.vibrate(500)
+                @Suppress("DEPRECATION") vibrator.vibrate(500)
             }
         }
     }
