@@ -246,11 +246,24 @@ class QuizAdapter(
                     }
 
                     is Question.MultipleAnswer -> {
-                        if ((userAnswer as List<*>).containsAll(question.correctAnswers)) {
-                            game.addScore(question.reward, true)
+                        if (userAnswer != null) {
+                            // Convert both lists to sets and compare
+                            if ((userAnswer as List<*>).toSet() == (question.correctAnswers.toSet())) {
+                                game.addScore(question.reward, true)
+                            } else {
+                                game.addScore(0, isCorrect = false)
+                            }
+                            // Proceed to the next question or finish the quiz
+                            navigationHandler.navigateToNextQuestionOrLevel()
                         } else {
-                            game.addScore(0, isCorrect = false)
+                            vibratePhone()
+                            Timber.d("Answer is Null ########")
+                            Toast.makeText(context, "Please select an answer to continue!", Toast.LENGTH_SHORT).show()
                         }
+                    }
+
+                    is Question.InteractiveQuiz -> {
+                        evaluateAnswer(userAnswer, question.correctAnswer, question.reward)
                     }
 
                     is Question.Matching -> {
@@ -284,6 +297,7 @@ class QuizAdapter(
                 navigationHandler.navigateToNextQuestionOrLevel()
             } else {
                 vibratePhone()
+                Timber.d("Answer is Null ########")
                 Toast.makeText(context, "Please select an answer to continue!", Toast.LENGTH_SHORT).show()
             }
         }

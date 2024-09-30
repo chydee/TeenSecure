@@ -1,12 +1,14 @@
 package com.j0t1m4.teensecure.views.quiz
 
 import android.animation.ValueAnimator
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.j0t1m4.teensecure.R
 import com.j0t1m4.teensecure.databinding.FragmentYourScoreBinding
@@ -33,6 +35,13 @@ class FragmentYourScore : Fragment() {
         binding.tvTotalPassed.text = args.totalScored.toString()
         binding.tvTotalQuestions.text = "/100"
         animateTextViewToNumber(binding.tvTotalPassed, args.totalScored)
+
+        binding.btnShare.setOnClickListener {
+            shareQuizResult(args.totalScored)
+        }
+        binding.btnBackHome.setOnClickListener {
+            findNavController().popBackStack(R.id.fragmentGameOptions, inclusive = false)
+        }
     }
 
     // Function to animate the TextView from 1 to the target number
@@ -51,6 +60,22 @@ class FragmentYourScore : Fragment() {
 
         // Start the animation
         valueAnimator.start()
+    }
+
+    // Function to share the quiz result
+    private fun shareQuizResult(score: Int) {
+        // Create the content to be shared
+        val message = "I just scored $score out of 100 in the Teen Secure Quiz! 🎉 Can you beat my score? 🧠💡"
+
+        // Create an intent to share the message
+        val shareIntent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT, message)
+            type = "text/plain"
+        }
+
+        // Launch the share chooser
+        startActivity(Intent.createChooser(shareIntent, "Share your quiz result via"))
     }
 
 
