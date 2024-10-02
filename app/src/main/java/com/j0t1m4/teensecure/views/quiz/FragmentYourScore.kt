@@ -24,11 +24,10 @@ class FragmentYourScore : Fragment() {
     lateinit var settingContext: SharedPreferences
     private lateinit var binding: FragmentYourScoreBinding
     private val args by navArgs<FragmentYourScoreArgs>()
-    private var currentLevel: Int = 1
+    private var currentLevel: Int = 0
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
         binding = FragmentYourScoreBinding.inflate(inflater, container, false)
@@ -40,14 +39,14 @@ class FragmentYourScore : Fragment() {
         (requireActivity() as MainActivity).setToolbarBgColor(R.color.secondaryBackground)
         binding.tvTotalPassed.text = args.totalScored.toString()
         binding.tvTotalQuestions.text = "/100"
-        animateTextViewToNumber(binding.tvTotalPassed, args.totalScored)
+        animateTextViewToNumber(binding.tvTotalPassed, if (args.totalScored > 100) 100 else args.totalScored)
         updateUserProgress()
         binding.btnShare.setOnClickListener {
             shareQuizResult(args.totalScored)
         }
         binding.btnContinue.setOnClickListener {
             if (args.totalScored >= 75) {
-                FragmentYourScoreDirections.actionFragmentYourScoreToFragmentCourseCompleted(args.game, args.level, args.courseTitle).apply {
+                FragmentYourScoreDirections.actionFragmentYourScoreToFragmentCourseCompleted(args.game, currentLevel, args.courseTitle).apply {
                     findNavController().navigate(this)
                 }
             } else {
@@ -94,9 +93,11 @@ class FragmentYourScore : Fragment() {
         settingContext.currentGame = args.game
         settingContext.currentTopic = args.courseTitle
         if (args.game == "Teen Secure") {
-            settingContext.currentLevelTS = if (args.totalScored >= 75) args.level + 1 else args.level
+            currentLevel = if (args.totalScored >= 75) args.level + 1 else args.level
+            settingContext.currentLevelTS = currentLevel
         } else {
-            settingContext.currentLevelRW = if (args.totalScored >= 75) args.level + 1 else args.level
+            currentLevel = if (args.totalScored >= 75) args.level + 1 else args.level
+            settingContext.currentLevelTS = currentLevel
         }
     }
 

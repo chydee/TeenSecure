@@ -155,6 +155,16 @@
             app:popExitAnim="@android:anim/slide_out_right"
             app:popUpTo="@id/fragmentYourScore"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_fragmentYourScore_to_fragmentFailed"
+            app:destination="@id/fragmentFailed"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:launchSingleTop="false"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right"
+            app:popUpTo="@id/fragmentYourScore"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/fragmentQuiz"
@@ -199,16 +209,16 @@
     <fragment
         android:id="@+id/fragmentCourseCompleted"
         android:name="com.j0t1m4.teensecure.views.quiz.FragmentCourseCompleted"
-        android:label="fragment_course_completed"
+        android:label=""
         tools:layout="@layout/fragment_course_completed">
         <action
             android:id="@+id/action_fragmentCourseCompleted_to_fragmentLearningContent"
             app:destination="@id/fragmentLearningContent"
             app:enterAnim="@android:anim/fade_in"
             app:exitAnim="@android:anim/fade_out"
-            app:launchSingleTop="true"
             app:popEnterAnim="@android:anim/slide_in_left"
-            app:popExitAnim="@android:anim/slide_out_right" />
+            app:popExitAnim="@android:anim/slide_out_right"
+            app:popUpTo="@id/fragmentLearningContent" />
         <argument
             android:name="game"
             app:argType="string" />

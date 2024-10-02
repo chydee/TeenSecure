@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.j0t1m4.teensecure.R
 import com.j0t1m4.teensecure.databinding.FragmentFailedBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -19,6 +21,13 @@ class FragmentFailed : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentFailedBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.btnRetakeQuiz.setOnClickListener {
+            findNavController().popBackStack(R.id.fragmentLearningContent, inclusive = false)
+        }
     }
 
 }
