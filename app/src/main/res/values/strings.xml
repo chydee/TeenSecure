@@ -12,13 +12,13 @@
     <string name="teen_secure">Teen Secure</string>
     <string name="ransom_wrangler">Ransom Wrangler</string>
     <string name="tips">Tips:</string>
-    <string name="rw_level_5_text">Level 5: Expert Level (Locked)</string>
+    <string name="rw_level_5_text">Level 5: Expert Level</string>
     <string name="welcome_rw">Welcome to Ransom Wrangler</string>
     <string name="rw_welcome_message">In this section, you’ll embark on a journey to master ransomware awareness and cybersecurity. To proceed, you must successfully pass each level before unlocking the next.</string>
     <string name="rw_level_1_text">Start Level 1: Basic Awareness</string>
-    <string name="rw_level_2_text">Level 2: Intermediate Knowledge (Locked)</string>
-    <string name="rw_level_3_text">Level 3: Advanced Understanding (Locked)</string>
-    <string name="rw_level_4_text">Level 4: Proficient Knowledge (Locked)</string>
+    <string name="rw_level_2_text">Level 2: Intermediate Knowledge</string>
+    <string name="rw_level_3_text">Level 3: Advanced Understanding</string>
+    <string name="rw_level_4_text">Level 4: Proficient Knowledge</string>
     <string name="test_your_knowledge_btn_text">Test Your Knowledge</string>
     <string name="your_score_txt">Your Score</string>
     <string name="next_btn_text">Next</string>

@@ -57,9 +57,11 @@ class FragmentRwLevelSelector : Fragment() {
     private fun updateButton(button: MaterialButton, level: Int) {
         if (level <= currentLevel) {
             button.isEnabled = true
+            button.setTextColor(ContextCompat.getColorStateList(requireContext(), R.color.white))
             button.backgroundTintList = (ContextCompat.getColorStateList(requireContext(), R.color.secondaryColor))
         } else {
             button.isEnabled = false
+            button.setTextColor(ContextCompat.getColorStateList(requireContext(), R.color.black))
             button.backgroundTintList = (ContextCompat.getColorStateList(requireContext(), R.color.gray_c4c4c4))
         }
     }
