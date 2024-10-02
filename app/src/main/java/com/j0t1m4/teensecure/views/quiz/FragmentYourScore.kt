@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -50,9 +49,9 @@ class FragmentYourScore : Fragment() {
                     findNavController().navigate(this)
                 }
             } else {
-                Toast.makeText(requireContext(), "You did not make the pass mark!", Toast.LENGTH_LONG).show()
-                Thread.sleep(2000)
-                findNavController().popBackStack()
+                FragmentYourScoreDirections.actionFragmentYourScoreToFragmentFailed().apply {
+                    findNavController().navigate(this)
+                }
             }
         }
     }
