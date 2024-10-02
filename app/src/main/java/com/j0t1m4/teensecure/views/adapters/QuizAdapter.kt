@@ -158,7 +158,7 @@ class QuizAdapter(
                     val visualImageView = binding.visualQuestionImage
                     visualImageView.visible()
                     // Use Glide to load the image from the URL
-                    Glide.with(visualImageView.context).load(question.imageUrl).into(visualImageView)
+                    Glide.with(visualImageView.context).load(question.imageUrl).centerCrop().into(visualImageView)
                     binding.visualQuestionGroup.visible()
                     // Set up a listener for the RadioGroup to track the selected answer
                     binding.visualQuestionGroup.setOnCheckedChangeListener { _, checkedId ->
@@ -247,58 +247,64 @@ class QuizAdapter(
             }
 
             binding.btnNext.setOnClickListener {
-                // Check if userAnswer matches the correct answer for the current question
-                when (question) {
-                    is Question.MultipleChoice -> {
-                        evaluateAnswer(userAnswer, question.correctAnswer, question.reward)
-                    }
-
-                    is Question.TrueOrFalse -> {
-                        evaluateAnswer(userAnswer, question.correctAnswer, question.reward)
-                    }
-
-                    is Question.Visual -> {
-                        evaluateAnswer(userAnswer, question.correctAnswer, question.reward)
-                    }
-
-                    is Question.ScenarioBased -> {
-                        evaluateAnswer(userAnswer, question.correctAnswer, question.reward)
-                    }
-
-                    is Question.MultipleAnswer -> {
-                        if (userAnswer != null) {
-                            // Convert both lists to sets and compare
-                            if ((userAnswer as List<*>).toSet() == (question.correctAnswers.toSet())) {
-                                game.addScore(question.reward, true)
-                            } else {
-                                game.addScore(0, isCorrect = false)
-                            }
-                            // Proceed to the next question or finish the quiz
-                            navigationHandler.navigateToNextQuestionOrLevel()
-                        } else {
-                            vibratePhone()
-                            Toast.makeText(context, "Please select an answer to continue!", Toast.LENGTH_SHORT).show()
+                // Check if the button text is "Submit"
+                if (binding.btnNext.text == "Submit") {
+                    // End the quiz and navigate to the result screen
+                    navigationHandler.navigateToResultsScreen()
+                } else {
+                    // Check if userAnswer matches the correct answer for the current question
+                    when (question) {
+                        is Question.MultipleChoice -> {
+                            evaluateAnswer(userAnswer, question.correctAnswer, question.reward)
                         }
-                    }
 
-                    is Question.InteractiveQuiz -> {
-                        evaluateAnswer(userAnswer, question.correctAnswer, question.reward)
-                    }
+                        is Question.TrueOrFalse -> {
+                            evaluateAnswer(userAnswer, question.correctAnswer, question.reward)
+                        }
 
-                    is Question.Matching -> {
-                        evaluateAnswer(userAnswer, null, question.reward)
-                    }
+                        is Question.Visual -> {
+                            evaluateAnswer(userAnswer, question.correctAnswer, question.reward)
+                        }
 
-                    is Question.FillInTheBlank -> {
-                        evaluateAnswer(userAnswer, question.correctAnswer, question.reward)
-                    }
+                        is Question.ScenarioBased -> {
+                            evaluateAnswer(userAnswer, question.correctAnswer, question.reward)
+                        }
 
-                    is Question.DragAndDrop -> {
-                        userAnswer = dragAndDropAdapter?.getItems()
-                        evaluateAnswer(userAnswer, question.correctOrder, question.reward)
-                    }
+                        is Question.MultipleAnswer -> {
+                            if (userAnswer != null) {
+                                // Convert both lists to sets and compare
+                                if ((userAnswer as List<*>).toSet() == (question.correctAnswers.toSet())) {
+                                    game.addScore(question.reward, true)
+                                } else {
+                                    game.addScore(0, isCorrect = false)
+                                }
+                                // Proceed to the next question or finish the quiz
+                                navigationHandler.navigateToNextQuestionOrLevel()
+                            } else {
+                                vibratePhone()
+                                Toast.makeText(context, "Please select an answer to continue!", Toast.LENGTH_SHORT).show()
+                            }
+                        }
 
-                    else -> evaluateAnswer(null, null, 0)
+                        is Question.InteractiveQuiz -> {
+                            evaluateAnswer(userAnswer, question.correctAnswer, question.reward)
+                        }
+
+                        is Question.Matching -> {
+                            evaluateAnswer(userAnswer, null, question.reward)
+                        }
+
+                        is Question.FillInTheBlank -> {
+                            evaluateAnswer(userAnswer, question.correctAnswer, question.reward)
+                        }
+
+                        is Question.DragAndDrop -> {
+                            userAnswer = dragAndDropAdapter?.getItems()
+                            evaluateAnswer(userAnswer, question.correctOrder, question.reward)
+                        }
+
+                        else -> evaluateAnswer(null, null, 0)
+                    }
                 }
             }
         }
@@ -371,4 +377,5 @@ class QuizAdapter(
 interface QuizNavigationHandler {
     fun navigateToNextQuestionOrLevel()
     fun navigateToPreviousQuestionOrLevel()
+    fun navigateToResultsScreen()
 }

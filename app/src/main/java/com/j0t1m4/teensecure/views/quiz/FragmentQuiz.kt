@@ -15,8 +15,6 @@ import com.j0t1m4.teensecure.databinding.FragmentQuizBinding
 import com.j0t1m4.teensecure.views.activities.MainActivity
 import com.j0t1m4.teensecure.views.adapters.QuizAdapter
 import com.j0t1m4.teensecure.views.adapters.QuizNavigationHandler
-import com.j0t1m4.teensecure.views.utils.gone
-import com.j0t1m4.teensecure.views.utils.visible
 import com.zhpan.indicator.IndicatorView
 import com.zhpan.indicator.enums.IndicatorSlideMode
 import com.zhpan.indicator.enums.IndicatorStyle
@@ -44,18 +42,7 @@ class FragmentQuiz : Fragment(), QuizNavigationHandler {
         game.totalQuestions = args.questions.size
         quizAdapter = QuizAdapter(requireContext(), args.questions.toList(), game, this)
         implementSlider(args.questions.toList())
-        binding.totalQuestionsSize.text = "/${args.questions.size}"/*prevButton.setOnClickListener {
-            if (questionViewPager.currentItem > 0) {
-                questionViewPager.currentItem = questionViewPager.currentItem - 1
-            }
-        }*/
-
-
-        binding.btnSubmit.setOnClickListener {
-            FragmentQuizDirections.actionFragmentQuizToFragmentYourScore(game.getTotalScore(), NUM_PAGES).apply {
-                findNavController().navigate(this)
-            }
-        }
+        binding.totalQuestionsSize.text = "/${args.questions.size}"
     }
 
     private fun implementSlider(collections: List<Question>) {
@@ -82,11 +69,6 @@ class FragmentQuiz : Fragment(), QuizNavigationHandler {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 indicator.onPageSelected(position)
-                if (binding.questionViewPager.currentItem == quizAdapter.itemCount - 1) {
-                    binding.btnSubmit.visible()
-                } else {
-                    binding.btnSubmit.gone()
-                }
             }
         })
     }
@@ -105,6 +87,12 @@ class FragmentQuiz : Fragment(), QuizNavigationHandler {
             binding.questionViewPager.currentItem = binding.questionViewPager.currentItem - 1
             currentPage = binding.questionViewPager.currentItem + 1
             binding.currentQuestionIndex.text = currentPage.toString()
+        }
+    }
+
+    override fun navigateToResultsScreen() {
+        FragmentQuizDirections.actionFragmentQuizToFragmentYourScore(game.getTotalScore(), NUM_PAGES).apply {
+            findNavController().navigate(this)
         }
     }
 
