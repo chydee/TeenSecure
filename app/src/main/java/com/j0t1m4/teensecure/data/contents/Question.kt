@@ -22,8 +22,9 @@ sealed class Question : Parcelable {
 
     @Parcelize
     data class Matching(
+        val instruction: String,
         val pairs: Map<String, String>, // Left side to right side matching
-        /*val correctAnswer: Map<String, String> = mapOf(
+        val correctAnswer: Map<String, String>,/* = mapOf(
             "Email Phishing" to "Uses emails to trick you into giving away personal information",
             "Message Phishing" to "Uses messages to trick you into giving away information",
             "Fake Website" to "Pretends to be a trusted website to steal your information"
@@ -38,7 +39,7 @@ sealed class Question : Parcelable {
 
     @Parcelize
     data class Visual(
-        val imageUrl: Int, val question: String, val correctAnswer: Boolean, val reward: Int
+        val imageUrl: List<Int>, val question: String, val options: List<String>, val correctAnswer: String, val reward: Int
     ) : Question()
 
     @Parcelize
@@ -48,7 +49,7 @@ sealed class Question : Parcelable {
 
     @Parcelize
     data class DragAndDrop(
-        val items: List<String>, val correctOrder: List<String>, val reward: Int
+        val question: String = "", val items: List<String>, val correctOrder: List<String>, val reward: Int
     ) : Question()
 
     @Parcelize

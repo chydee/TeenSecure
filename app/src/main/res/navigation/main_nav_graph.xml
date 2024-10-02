@@ -128,6 +128,16 @@
         <argument
             android:name="total_questions"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_fragmentYourScore_to_fragmentLearningContent"
+            app:destination="@id/fragmentLearningContent"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right"
+            app:popUpTo="@id/fragmentYourScore"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/fragmentQuiz"

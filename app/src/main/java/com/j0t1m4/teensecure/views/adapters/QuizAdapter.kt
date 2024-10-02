@@ -16,7 +16,6 @@ import android.widget.Toast
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.j0t1m4.teensecure.R
 import com.j0t1m4.teensecure.core.mechanism.Game
 import com.j0t1m4.teensecure.data.contents.Question
@@ -52,12 +51,12 @@ class QuizAdapter(
                 is Question.MultipleChoice -> question.question
                 is Question.TrueOrFalse -> question.question
                 is Question.ScenarioBased -> question.question
-                is Question.Matching -> "Match the following:"
+                is Question.Matching -> question.instruction.ifEmpty { "Match the following:" }
                 is Question.Visual -> question.question
                 is Question.MultipleAnswer -> question.question
                 is Question.FillInTheBlank -> question.question
                 is Question.InteractiveQuiz -> question.question
-                is Question.DragAndDrop -> "Arrange the items in the correct order:"
+                is Question.DragAndDrop -> question.question.ifEmpty { "Arrange the items in the correct order:" }
             }
 
             when (question) {
@@ -158,20 +157,23 @@ class QuizAdapter(
                     val visualImageView = binding.visualQuestionImage
                     visualImageView.visible()
                     // Use Glide to load the image from the URL
-                    Glide.with(visualImageView.context).load(question.imageUrl).centerCrop().into(visualImageView)
-                    binding.visualQuestionGroup.visible()
-                    // Set up a listener for the RadioGroup to track the selected answer
-                    binding.visualQuestionGroup.setOnCheckedChangeListener { _, checkedId ->
-                        userAnswer = when (checkedId) {
-                            R.id.visualYesRadioButton -> "True"
-                            R.id.visualNoRadioButton -> "False"
-                            else -> ""
-                        }
+                    if (question.imageUrl.size > 1) {
+                        val combinedBitmap = combineImages(context, leftImageResId = question.imageUrl[0], rightImageResId = question.imageUrl[1])
+                        visualImageView.setImageBitmap(combinedBitmap)
+                    } else {
+                        visualImageView.setImageResource(question.imageUrl.first())
                     }
-                    // Pre-fill if there's a previous answer
-                    when (userAnswer) {
-                        "True" -> binding.visualYesRadioButton.isChecked = true
-                        "False" -> binding.visualNoRadioButton.isChecked = true
+                    binding.visualQuestionGroup.visible()
+                    binding.visualQuestionGroup.removeAllViews() // Clear any existing options
+                    question.options.forEach { option ->
+                        val radioButton = RadioButton(context)
+                        radioButton.text = option
+                        binding.visualQuestionGroup.addView(radioButton)
+                    }
+                    // Set up a listener for the RadioGroup to track the selected answer
+                    binding.visualQuestionGroup.setOnCheckedChangeListener { group, checkedId ->
+                        val radioButton = group.findViewById<RadioButton>(checkedId)
+                        userAnswer = radioButton.text
                     }
                 }
 
@@ -291,7 +293,7 @@ class QuizAdapter(
                         }
 
                         is Question.Matching -> {
-                            evaluateAnswer(userAnswer, null, question.reward)
+                            evaluateAnswer(userAnswer, question.correctAnswer, question.reward)
                         }
 
                         is Question.FillInTheBlank -> {
@@ -371,7 +373,6 @@ class QuizAdapter(
 
         return combinedBitmap
     }
-
 }
 
 interface QuizNavigationHandler {

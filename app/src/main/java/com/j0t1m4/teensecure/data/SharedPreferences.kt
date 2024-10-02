@@ -30,7 +30,7 @@ class SharedPreferences(applicationContext: Context) {
         set(value) = config.edit().putInt(KEY_CURRENT_LEVEL_TS, value).apply()
 
     var currentLevelRW: Int
-        get() = config.getInt(KEY_CURRENT_LEVEL_RW, 2)
+        get() = config.getInt(KEY_CURRENT_LEVEL_RW, 1)
         set(value) = config.edit().putInt(KEY_CURRENT_LEVEL_RW, value).apply()
 
     var username: String?
