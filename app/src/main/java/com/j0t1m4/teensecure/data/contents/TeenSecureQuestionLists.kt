@@ -30,11 +30,11 @@ object TeenSecureQuestionLists {
         ),
         Question.TrueOrFalse(
             question = "Phishing attacks often use fake websites that look like real ones to trick you into giving away personal information.",
-            correctAnswer = true, reward = 5
+            correctAnswer = true, reward = 10
         ),
         Question.TrueOrFalse(
             question = "Phishing only occurs through emails.",
-            correctAnswer = false, reward = 5
+            correctAnswer = false, reward = 10
         ),
         Question.Matching(
             instruction = "Match the phishing method with its description:",
@@ -53,8 +53,8 @@ object TeenSecureQuestionLists {
         Question.Visual(
             imageUrl = listOf(R.drawable.fake_website, R.drawable.real_website),
             options = listOf("Image A", "Image B"),
-            question = "Identify the fake website.",
-            correctAnswer = "Image B", reward = 10
+            question = "Look at the two images below. One is a real website, and one is a fake website designed for phishing. Identify the fake website.",
+            correctAnswer = "Image B", reward = 15
         ),
         Question.MultipleAnswer(
             question = "Which of the following are common signs of a phishing attack? (Select all that apply)",
@@ -100,11 +100,11 @@ object TeenSecureQuestionLists {
         ),
         Question.TrueOrFalse(
             question = "Phishing attackers can create fake websites that look almost identical to real ones to capture your login information.",
-            correctAnswer = true, reward = 5
+            correctAnswer = true, reward = 10
         ),
         Question.TrueOrFalse(
             question = "At the intermediate level, phishing messages often include personal details to make them more convincing.",
-            correctAnswer = true, reward = 5
+            correctAnswer = true, reward = 10
         ),
         Question.Matching(
             instruction = "Match the phishing tactic with its description at the intermediate level.",
@@ -124,7 +124,7 @@ object TeenSecureQuestionLists {
             imageUrl = listOf(R.drawable.fb_login_phishing_intermediate, R.drawable.fb_original_login),
             question = "Look at the two login pages below. One is a real login page, and one is a fake page designed for phishing. Identify the fake page.",
             options = listOf("Login Page A", "Login Page B"),
-            correctAnswer = "Login Page B", reward = 10
+            correctAnswer = "Login Page B", reward = 15
         ),
         Question.MultipleAnswer(
             question = "Which of the following are common characteristics of intermediate-level phishing attacks on social media? (Select all that apply)",
@@ -169,11 +169,11 @@ object TeenSecureQuestionLists {
         ),
         Question.TrueOrFalse(
             question = "Advanced phishing attacks often involve detailed research on the target to craft personalized messages.",
-            correctAnswer = true, reward = 5
+            correctAnswer = true, reward = 10
         ),
         Question.TrueOrFalse(
             question = "Spear phishing attacks on social media are usually random and not targeted.",
-            correctAnswer = false, reward = 5
+            correctAnswer = false, reward = 10
         ),
         Question.Matching(
             instruction = "Match the spear phishing tactic with its description.",
@@ -193,7 +193,7 @@ object TeenSecureQuestionLists {
             imageUrl = listOf(R.drawable.phishin_3_msg_a, R.drawable.phishin_3_msg_b),
             question = "Look at the two messages below. One is a real job offer from a known company, and one is a spear phishing attempt. Identify the phishing message.",
             options = listOf("Message A", "Message B"),
-            correctAnswer = "Message A", reward = 10
+            correctAnswer = "Message A", reward = 15
         ),
         Question.MultipleAnswer(
             question = "Which of the following tactics are commonly used in advanced spear phishing attacks on social media? (Select all that apply)",
@@ -241,11 +241,11 @@ object TeenSecureQuestionLists {
         ),
         Question.TrueOrFalse(
             question = "Baiting attacks often use free music, movies, or software downloads as bait.",
-            correctAnswer = true, reward = 5
+            correctAnswer = true, reward = 10
         ),
         Question.TrueOrFalse(
             question = "Baiting only occurs through emails.",
-            correctAnswer = false, reward = 5
+            correctAnswer = false, reward = 10
         ),
         Question.Matching(
             instruction = "Match the baiting tactics with its description:",
@@ -265,7 +265,7 @@ object TeenSecureQuestionLists {
             imageUrl = listOf(R.drawable.baiting_q1_link_a, R.drawable.baiting_q1_link_b),
             options = listOf("Link A", "Link B"),
             question = "Look at the two links below. One link offers a legitimate download, and the other is a baiting attempt. Identify the baiting link.",
-            correctAnswer = "Link B", reward = 10
+            correctAnswer = "Link B", reward = 15
         ),
         Question.MultipleAnswer(
             question = "Which of the following are common characteristics of baiting attacks on social media? (Select all that apply)",
@@ -310,11 +310,11 @@ object TeenSecureQuestionLists {
         ),
         Question.TrueOrFalse(
             question = "Intermediate-level baiting attacks can be found on trusted websites that have been compromised.",
-            correctAnswer = true, reward = 5
+            correctAnswer = true, reward = 10
         ),
         Question.TrueOrFalse(
             question = "Baiting attacks at this level only occur through social media messages.",
-            correctAnswer = false, reward = 5
+            correctAnswer = false, reward = 10
         ),
         Question.Matching(
             instruction = "Match the baiting tactics with their descriptions at the intermediate level.",
@@ -333,7 +333,7 @@ object TeenSecureQuestionLists {
             imageUrl = listOf(R.drawable.baiting_q1_link_a, R.drawable.baiting_q1_link_b),
             question = "Look at the two download links below. One is a legitimate software update, and the other is a baiting attempt. Identify the baiting link.",
             options = listOf("Link A", "Link B"),
-            correctAnswer = "Link A", reward = 10
+            correctAnswer = "Link A", reward = 15
         ),
         Question.MultipleAnswer(
             question = "Which of the following are common characteristics of intermediate-level baiting attacks on social media? (Select all that apply)",
@@ -378,11 +378,11 @@ object TeenSecureQuestionLists {
         ),
         Question.TrueOrFalse(
             question = "Advanced baiting attacks can use fake websites that look identical to real ones.",
-            correctAnswer = true, reward = 5
+            correctAnswer = true, reward = 10
         ),
         Question.TrueOrFalse(
             question = "Advanced baiting attacks rarely use personalized baits.",
-            correctAnswer = false, reward = 5
+            correctAnswer = false, reward = 10
         ),
         Question.Matching(
             instruction = "Match the advanced baiting tactic with its description.",
@@ -402,7 +402,7 @@ object TeenSecureQuestionLists {
             imageUrl = listOf(R.drawable.baiting_q3_a, R.drawable.baiting_q3_b),
             question = "Look at the two websites below. One is a real cloud storage site, and the other is a fake site designed for baiting. Identify the fake site.",
             options = listOf("Website A", "Website B"),
-            correctAnswer = "Website B", reward = 10
+            correctAnswer = "Website B", reward = 15
         ),
         Question.MultipleAnswer(
             question = "Which of the following are common characteristics of advanced baiting attacks on social media? (Select all that apply)",
@@ -450,11 +450,11 @@ object TeenSecureQuestionLists {
         ),
         Question.TrueOrFalse(
             question = "Impersonation attacks can occur through fake social media profiles, emails, or messages.",
-            correctAnswer = true, reward = 5
+            correctAnswer = true, reward = 10
         ),
         Question.TrueOrFalse(
             question = "Impersonation is only used to send spam messages and not to gain access to personal information.",
-            correctAnswer = false, reward = 5
+            correctAnswer = false, reward = 10
         ),
         Question.Matching(
             instruction = "",
@@ -473,7 +473,7 @@ object TeenSecureQuestionLists {
             imageUrl = listOf(R.drawable.impersonation_profile),
             question = "Look at the two social media profiles below. One is a legitimate profile, and the other is an impersonation attempt. Identify the impersonation profile.",
             options = listOf("Profile A", "Profile B"),
-            correctAnswer = "Profile B", reward = 10
+            correctAnswer = "Profile B", reward = 15
         ),
         Question.MultipleAnswer(
             question = "Which of the following are common tactics used in impersonation attacks on social media? (Select all that apply)",
@@ -517,11 +517,11 @@ object TeenSecureQuestionLists {
         ),
         Question.TrueOrFalse(
             question = "Intermediate-level impersonation attacks often involve impersonating friends, family members, or colleagues to gain trust.",
-            correctAnswer = true, reward = 5
+            correctAnswer = true, reward = 10
         ),
         Question.TrueOrFalse(
             question = "Intermediate-level impersonation attacks usually use unconvincing profiles and messages.",
-            correctAnswer = false, reward = 5
+            correctAnswer = false, reward = 10
         ),
         Question.Matching(
             instruction = "Match the following impersonation tactics with their descriptions:",
@@ -541,7 +541,7 @@ object TeenSecureQuestionLists {
             imageUrl = listOf(R.drawable.impersonation_b),
             question = "Look at the two social media profiles below. One is a genuine profile, and the other is a sophisticated impersonation attempt. Identify the impersonation profile.",
             options = listOf("Profile A", "Profile B"),
-            correctAnswer = "Profile B", reward = 10
+            correctAnswer = "Profile B", reward = 15
         ),
         Question.MultipleAnswer(
             question = "Which of the following are characteristics of intermediate-level impersonation attacks on social media? (Select all that apply)",
@@ -585,11 +585,11 @@ object TeenSecureQuestionLists {
         ),
         Question.TrueOrFalse(
             question = "Advanced impersonation attacks involve gathering detailed information from multiple sources to create a very believable persona.",
-            correctAnswer = true, reward = 5
+            correctAnswer = true, reward = 10
         ),
         Question.TrueOrFalse(
             question = "Advanced impersonation attacks are easy to spot due to their simplistic nature.",
-            correctAnswer = false, reward = 5
+            correctAnswer = false, reward = 10
         ),
         Question.Matching(
             instruction = "",
@@ -609,7 +609,7 @@ object TeenSecureQuestionLists {
             imageUrl = listOf(R.drawable.impersonation_c),
             question = "Look at the two social media profiles below. One is a highly believable impersonation attempt created using extensive research, and the other is a generic profile. Identify the impersonation profile.",
             options = listOf("Profile A", "Profile B"),
-            correctAnswer = "Profile A", reward = 10
+            correctAnswer = "Profile A", reward = 15
         ),
         Question.MultipleAnswer(
             question = "Which of the following are characteristics of advanced impersonation attacks on social media? (Select all that apply)",
@@ -656,11 +656,11 @@ object TeenSecureQuestionLists {
         ),
         Question.TrueOrFalse(
             question = "Cyberbullying can involve spreading rumors and sharing private information without permission.",
-            correctAnswer = true, reward = 5
+            correctAnswer = true, reward = 10
         ),
         Question.TrueOrFalse(
             question = "Cyberbullying is only about sending mean messages and does not involve sharing private information.",
-            correctAnswer = false, reward = 5
+            correctAnswer = false, reward = 10
         ),
         Question.Matching(
             instruction = "Match the following cyberbullying tactics with their descriptions:",
@@ -680,7 +680,7 @@ object TeenSecureQuestionLists {
             imageUrl = listOf(R.drawable.cb_3, R.drawable.cb_1),
             question = "Look at the two social media posts below. One is an example of cyberbullying, and the other is a supportive message. Identify the cyberbullying post.",
             options = listOf("Post A", "Post B"),
-            correctAnswer = "Post A", reward = 10
+            correctAnswer = "Post A", reward = 15
         ),
         Question.MultipleAnswer(
             question = "Which of the following are examples of cyberbullying? (Select all that apply)",
@@ -748,7 +748,7 @@ object TeenSecureQuestionLists {
             imageUrl = listOf(R.drawable.cb_sets),
             question = "Look at the two sets of social media posts below. One set is an example of coordinated cyberbullying, and the other set contains positive interactions. Identify the cyberbullying set.",
             options = listOf("Set A", "Set B"),
-            correctAnswer = "Set A", reward = 10
+            correctAnswer = "Set A", reward = 15
         ),
         Question.MultipleAnswer(
             question = "Which of the following are tactics used in intermediate-level cyberbullying? (Select all that apply)",
@@ -792,11 +792,11 @@ object TeenSecureQuestionLists {
         ),
         Question.TrueOrFalse(
             question = "Advanced cyberbullying can include doxxing, which involves publishing private information about the victim.",
-            correctAnswer = true, reward = 5
+            correctAnswer = true, reward = 10
         ),
         Question.TrueOrFalse(
             question = "Advanced cyberbullying typically involves minor, occasional insults without causing significant emotional harm.",
-            correctAnswer = false, reward = 5
+            correctAnswer = false, reward = 10
         ),
         Question.Matching(
             instruction = "Match the advanced cyberbullying tactic with its description.",
@@ -816,7 +816,7 @@ object TeenSecureQuestionLists {
             imageUrl = listOf(R.drawable.cb_example),
             question = "Look at the two examples of online harassment below. One example is indicative of advanced cyberbullying, and the other is less severe. Identify the advanced cyberbullying example.",
             options = listOf("Example A", "Example B"),
-            correctAnswer = "Example A", reward = 10
+            correctAnswer = "Example A", reward = 15
         ),
         Question.MultipleAnswer(
             question = "Which of the following are characteristics of advanced cyberbullying? (Select all that apply)",

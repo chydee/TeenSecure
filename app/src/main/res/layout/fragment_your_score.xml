@@ -62,7 +62,7 @@
                 android:fontFamily="@font/poppins_extrabold"
                 android:text="1"
                 android:textColor="@color/red"
-                android:textSize="55sp"
+                android:textSize="45sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -73,7 +73,7 @@
                 android:paddingTop="12dp"
                 android:text="/100"
                 android:textColor="@color/md_grey_500"
-                android:textSize="40sp"
+                android:textSize="30sp"
                 android:textStyle="bold" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
@@ -85,21 +85,21 @@
         android:layout_marginBottom="16dp"
         android:fontFamily="@font/poppins_bold"
         android:paddingVertical="12dp"
-        android:text="Share"
+        android:text="Share Your Score"
         android:textAllCaps="false"
         android:textColor="@color/white"
         app:backgroundTint="@color/secondaryDarkColor"
-        app:layout_constraintBottom_toTopOf="@+id/btn_back_home"
+        app:layout_constraintBottom_toTopOf="@+id/btn_continue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_back_home"
+        android:id="@+id/btn_continue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_bold"
         android:paddingVertical="12dp"
-        android:text="Back to Home"
+        android:text="Continue"
         android:textAllCaps="false"
         android:textColor="@color/white"
         app:backgroundTint="@color/secondaryDarkColor"

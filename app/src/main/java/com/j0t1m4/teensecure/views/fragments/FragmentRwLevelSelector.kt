@@ -1,6 +1,5 @@
 package com.j0t1m4.teensecure.views.fragments
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -85,19 +84,9 @@ class FragmentRwLevelSelector : Fragment() {
             5 -> content = RansomWranglerCourse.level5Content
         }
         // Navigate to CourseContentFragment, passing the selected level
-        val action = content?.let { FragmentRwLevelSelectorDirections.actionFragmentRwLevelSelectorToFragmentLearningContent(it) }
+        val action = content?.let { FragmentRwLevelSelectorDirections.actionFragmentRwLevelSelectorToFragmentLearningContent(it, "Ransom Wrangler", level, it.levelTitle) }
         if (action != null) {
             findNavController().navigate(action)
         }
     }
-
-    // Call this method to update the current level after passing each level
-    private fun updateCurrentLevel(newLevel: Int) {
-        currentLevel = newLevel
-        val sharedPreferences = requireActivity().getSharedPreferences("RansomWranglerPrefs", Context.MODE_PRIVATE)
-        sharedPreferences.edit().putInt("currentLevel", currentLevel).apply()
-        updateLevelButtons()
-    }
-
-
 }

@@ -56,6 +56,15 @@
         <argument
             android:name="courseContent"
             app:argType="com.j0t1m4.teensecure.data.contents.CourseContent" />
+        <argument
+            android:name="selectedGame"
+            app:argType="string" />
+        <argument
+            android:name="selectedLevel"
+            app:argType="integer" />
+        <argument
+            android:name="courseTitle"
+            app:argType="string" />
         <action
             android:id="@+id/action_fragmentLearningContent_to_fragmentQuiz"
             app:destination="@id/fragmentQuiz"
@@ -128,16 +137,24 @@
         <argument
             android:name="total_questions"
             app:argType="integer" />
+        <argument
+            android:name="game"
+            app:argType="string" />
+        <argument
+            android:name="level"
+            app:argType="integer" />
+        <argument
+            android:name="courseTitle"
+            app:argType="string" />
         <action
-            android:id="@+id/action_fragmentYourScore_to_fragmentLearningContent"
-            app:destination="@id/fragmentLearningContent"
+            android:id="@+id/action_fragmentYourScore_to_fragmentCourseCompleted"
+            app:destination="@id/fragmentCourseCompleted"
             app:enterAnim="@android:anim/fade_in"
             app:exitAnim="@android:anim/fade_out"
-            app:launchSingleTop="true"
             app:popEnterAnim="@android:anim/slide_in_left"
             app:popExitAnim="@android:anim/slide_out_right"
             app:popUpTo="@id/fragmentYourScore"
-            app:popUpToInclusive="false" />
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/fragmentQuiz"
@@ -153,6 +170,15 @@
             app:popExitAnim="@android:anim/fade_out"
             app:popUpTo="@id/fragmentQuiz"
             app:popUpToInclusive="true" />
+        <argument
+            android:name="game"
+            app:argType="string" />
+        <argument
+            android:name="level"
+            app:argType="integer" />
+        <argument
+            android:name="courseTitle"
+            app:argType="string" />
         <argument
             android:name="questions"
             app:argType="com.j0t1m4.teensecure.data.contents.Question[]" />
@@ -170,4 +196,32 @@
         app:popEnterAnim="@anim/nav_default_pop_enter_anim"
         app:popExitAnim="@anim/nav_default_pop_exit_anim"
         app:popUpTo="@id/main_nav_graph.xml" />
+    <fragment
+        android:id="@+id/fragmentCourseCompleted"
+        android:name="com.j0t1m4.teensecure.views.quiz.FragmentCourseCompleted"
+        android:label="fragment_course_completed"
+        tools:layout="@layout/fragment_course_completed">
+        <action
+            android:id="@+id/action_fragmentCourseCompleted_to_fragmentLearningContent"
+            app:destination="@id/fragmentLearningContent"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+        <argument
+            android:name="game"
+            app:argType="string" />
+        <argument
+            android:name="level"
+            app:argType="integer" />
+        <argument
+            android:name="courseTitle"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentFailed"
+        android:name="com.j0t1m4.teensecure.views.quiz.FragmentFailed"
+        android:label="fragment_failed"
+        tools:layout="@layout/fragment_failed" />
 </navigation>

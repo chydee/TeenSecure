@@ -91,7 +91,7 @@ class FragmentQuiz : Fragment(), QuizNavigationHandler {
     }
 
     override fun navigateToResultsScreen() {
-        FragmentQuizDirections.actionFragmentQuizToFragmentYourScore(game.getTotalScore(), NUM_PAGES).apply {
+        FragmentQuizDirections.actionFragmentQuizToFragmentYourScore(game.getTotalScore(), NUM_PAGES, args.game, args.level, args.courseTitle).apply {
             findNavController().navigate(this)
         }
     }

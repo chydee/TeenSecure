@@ -91,9 +91,15 @@ class FragmentSelectedLevel : Fragment() {
             else -> content = null
         }
 
+        val selectedLevel = when (level) {
+            "beginner" -> 1
+            "intermediate" -> 2
+            "professional" -> 3
+            else -> -1
+        }
         // Navigate to the next fragment if content is not null
         content?.let {
-            FragmentSelectedLevelDirections.actionFragmentSelectedLevelToFragmentLearningContent(it).apply {
+            FragmentSelectedLevelDirections.actionFragmentSelectedLevelToFragmentLearningContent(it, "Teen Secure", selectedLevel, topic).apply {
                 findNavController().navigate(this)
             }
         }

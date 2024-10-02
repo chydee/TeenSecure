@@ -7,18 +7,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.j0t1m4.teensecure.R
+import com.j0t1m4.teensecure.data.SharedPreferences
 import com.j0t1m4.teensecure.databinding.FragmentYourScoreBinding
 import com.j0t1m4.teensecure.views.activities.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class FragmentYourScore : Fragment() {
+    @Inject
+    lateinit var settingContext: SharedPreferences
     private lateinit var binding: FragmentYourScoreBinding
     private val args by navArgs<FragmentYourScoreArgs>()
+    private var currentLevel: Int = 1
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,29 +41,34 @@ class FragmentYourScore : Fragment() {
         binding.tvTotalPassed.text = args.totalScored.toString()
         binding.tvTotalQuestions.text = "/100"
         animateTextViewToNumber(binding.tvTotalPassed, args.totalScored)
-
+        updateUserProgress()
         binding.btnShare.setOnClickListener {
             shareQuizResult(args.totalScored)
         }
-        binding.btnBackHome.setOnClickListener {
-            findNavController().popBackStack(R.id.fragmentGameOptions, inclusive = false)
+        binding.btnContinue.setOnClickListener {
+            if (args.totalScored >= 75) {
+                FragmentYourScoreDirections.actionFragmentYourScoreToFragmentCourseCompleted(args.game, args.level, args.courseTitle).apply {
+                    findNavController().navigate(this)
+                }
+            } else {
+                Toast.makeText(requireContext(), "You did not make the pass mark!", Toast.LENGTH_LONG).show()
+                Thread.sleep(2000)
+                findNavController().popBackStack()
+            }
         }
     }
 
     // Function to animate the TextView from 1 to the target number
-    private fun animateTextViewToNumber(textView: TextView, targetNumber: Int, duration: Long = 2000L) {
+    private fun animateTextViewToNumber(textView: TextView, targetNumber: Int, duration: Long = 3000L) {
         // Create a ValueAnimator that goes from 1 to the target number
         val valueAnimator = ValueAnimator.ofInt(1, targetNumber)
-
         // Set the duration of the animation
         valueAnimator.duration = duration
-
         // Add an update listener to update the text of the TextView with the current animated value
         valueAnimator.addUpdateListener { animator ->
             val animatedValue = animator.animatedValue as Int
             textView.text = animatedValue.toString()
         }
-
         // Start the animation
         valueAnimator.start()
     }
@@ -65,7 +76,7 @@ class FragmentYourScore : Fragment() {
     // Function to share the quiz result
     private fun shareQuizResult(score: Int) {
         // Create the content to be shared
-        val message = "I just scored $score out of 100 in the Quiz! 🎉 Can you beat my score? 🧠💡"
+        val message = "I just scored $score out of 100 in the ${args.game}: ${args.courseTitle} Quiz! 🎉 Can you beat my score? 🧠💡"
 
         // Create an intent to share the message
         val shareIntent = Intent().apply {
@@ -76,6 +87,17 @@ class FragmentYourScore : Fragment() {
 
         // Launch the share chooser
         startActivity(Intent.createChooser(shareIntent, "Share your quiz result via"))
+    }
+
+    // Call this method to update the current level after passing each level
+    private fun updateUserProgress() {
+        settingContext.currentGame = args.game
+        settingContext.currentTopic = args.courseTitle
+        if (args.game == "Teen Secure") {
+            settingContext.currentLevelTS = if (args.totalScored >= 75) args.level + 1 else args.level
+        } else {
+            settingContext.currentLevelRW = if (args.totalScored >= 75) args.level + 1 else args.level
+        }
     }
 
 

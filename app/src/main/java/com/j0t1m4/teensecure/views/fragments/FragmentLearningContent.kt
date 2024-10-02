@@ -45,7 +45,7 @@ class FragmentLearningContent : Fragment() {
         binding.tvTips.text = args.courseContent.tips
         addLearningContents(args.courseContent.learningContents, binding.llLearningContents, requireContext())
         binding.btnTextKnowledge.setOnClickListener {
-            FragmentLearningContentDirections.actionFragmentLearningContentToFragmentQuiz(args.courseContent.quiz.toTypedArray()).apply {
+            FragmentLearningContentDirections.actionFragmentLearningContentToFragmentQuiz(game = args.selectedGame, level = args.selectedLevel, courseTitle = args.courseContent.levelTitle, args.courseContent.quiz.toTypedArray()).apply {
                 findNavController().navigate(this)
             }
         }
