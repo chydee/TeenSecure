@@ -65,7 +65,7 @@ class FragmentYourScore : Fragment() {
     // Function to share the quiz result
     private fun shareQuizResult(score: Int) {
         // Create the content to be shared
-        val message = "I just scored $score out of 100 in the Teen Secure Quiz! 🎉 Can you beat my score? 🧠💡"
+        val message = "I just scored $score out of 100 in the Quiz! 🎉 Can you beat my score? 🧠💡"
 
         // Create an intent to share the message
         val shareIntent = Intent().apply {
