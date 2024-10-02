@@ -54,29 +54,26 @@
             </RadioGroup>
 
             <!-- True or False Question Type -->
-            <LinearLayout
-                android:id="@+id/trueOrFalseLayout"
+            <RadioGroup
+                android:id="@+id/trueOrFalseGroup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:visibility="gone">
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/trueButton"
+                <RadioButton
+                    android:id="@+id/trueRadioButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="True"
-                    app:cornerRadius="8dp" />
+                    android:text="True" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/falseButton"
+                <RadioButton
+                    android:id="@+id/falseRadioButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="False"
-                    app:cornerRadius="8dp" />
-
-            </LinearLayout>
+                    android:text="False" />
+            </RadioGroup>
 
             <!-- Matching Question Type -->
             <LinearLayout
@@ -110,30 +107,30 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_marginBottom="8dp"
-                android:scaleType="centerCrop"
+                android:scaleType="fitXY"
                 android:visibility="gone" />
 
             <!-- Buttons for Visual question (e.g., Yes/No for phishing attempts) -->
-            <LinearLayout
-                android:id="@+id/visualQuestionLayout"
+            <RadioGroup
+                android:id="@+id/visualQuestionGroup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:visibility="gone">
 
-                <Button
-                    android:id="@+id/visualYesButton"
+                <RadioButton
+                    android:id="@+id/visualYesRadioButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Yes" />
 
-                <Button
-                    android:id="@+id/visualNoButton"
+                <RadioButton
+                    android:id="@+id/visualNoRadioButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:text="No" />
-            </LinearLayout>
+            </RadioGroup>
 
             <!-- Scenario-Based Question Type -->
             <LinearLayout

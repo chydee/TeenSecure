@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.j0t1m4.teensecure.R
 import com.j0t1m4.teensecure.core.mechanism.Game
 import com.j0t1m4.teensecure.data.contents.Question
 import com.j0t1m4.teensecure.databinding.ItemQuestionTypeBinding
@@ -37,12 +38,13 @@ class QuizAdapter(
         fun bind(question: Question) {
             binding.apply {
                 multipleChoiceGroup.gone()
-                trueOrFalseLayout.gone()
+                trueOrFalseGroup.gone()
                 matchingLayout.gone()
                 visualQuestionImage.gone()
-                visualQuestionLayout.gone()
+                visualQuestionGroup.gone()
                 scenarioBasedLayout.gone()
                 multipleAnswerLayout.gone()
+                fillInTheBlankLayout.gone()
             }
 
             // Set the question text
@@ -98,13 +100,24 @@ class QuizAdapter(
                 }
 
                 is Question.TrueOrFalse -> {
-                    binding.trueOrFalseLayout.visible()
+                    binding.trueOrFalseGroup.visible()
 
-                    val trueButton = binding.trueButton
-                    val falseButton = binding.falseButton
+                    val trueRadioButton = binding.trueRadioButton // Update to RadioButton
+                    val falseRadioButton = binding.falseRadioButton // Update to RadioButton
 
-                    trueButton.setOnClickListener { userAnswer = "True" }
-                    falseButton.setOnClickListener { userAnswer = "False" }
+                    // Set up a listener for the RadioGroup to track the selected answer
+                    binding.trueOrFalseGroup.setOnCheckedChangeListener { _, checkedId ->
+                        userAnswer = when (checkedId) {
+                            R.id.trueRadioButton -> "True"
+                            R.id.falseRadioButton -> "False"
+                            else -> ""
+                        }
+                    }
+                    // Pre-fill if there's a previous answer
+                    when (userAnswer) {
+                        "True" -> trueRadioButton.isChecked = true
+                        "False" -> falseRadioButton.isChecked = true
+                    }
                 }
 
                 is Question.DragAndDrop -> {
@@ -144,14 +157,21 @@ class QuizAdapter(
                 is Question.Visual -> {
                     val visualImageView = binding.visualQuestionImage
                     visualImageView.visible()
-                    // Use Glide or Picasso to load the image from URL
+                    // Use Glide to load the image from the URL
                     Glide.with(visualImageView.context).load(question.imageUrl).into(visualImageView)
-                    binding.visualQuestionLayout.visible()
-                    binding.visualYesButton.setOnClickListener {
-                        userAnswer = "True"
+                    binding.visualQuestionGroup.visible()
+                    // Set up a listener for the RadioGroup to track the selected answer
+                    binding.visualQuestionGroup.setOnCheckedChangeListener { _, checkedId ->
+                        userAnswer = when (checkedId) {
+                            R.id.visualYesRadioButton -> "True"
+                            R.id.visualNoRadioButton -> "False"
+                            else -> ""
+                        }
                     }
-                    binding.visualNoButton.setOnClickListener {
-                        userAnswer = "False"
+                    // Pre-fill if there's a previous answer
+                    when (userAnswer) {
+                        "True" -> binding.visualYesRadioButton.isChecked = true
+                        "False" -> binding.visualNoRadioButton.isChecked = true
                     }
                 }
 
@@ -257,7 +277,6 @@ class QuizAdapter(
                             navigationHandler.navigateToNextQuestionOrLevel()
                         } else {
                             vibratePhone()
-                            Timber.d("Answer is Null ########")
                             Toast.makeText(context, "Please select an answer to continue!", Toast.LENGTH_SHORT).show()
                         }
                     }
@@ -297,7 +316,6 @@ class QuizAdapter(
                 navigationHandler.navigateToNextQuestionOrLevel()
             } else {
                 vibratePhone()
-                Timber.d("Answer is Null ########")
                 Toast.makeText(context, "Please select an answer to continue!", Toast.LENGTH_SHORT).show()
             }
         }
