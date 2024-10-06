@@ -96,7 +96,7 @@ class FragmentYourScore : Fragment() {
             settingContext.currentLevelTS = currentLevel
         } else {
             currentLevel = if (args.totalScored >= 75) args.level + 1 else args.level
-            settingContext.currentLevelTS = currentLevel
+            settingContext.currentLevelRW = currentLevel
         }
     }
 
